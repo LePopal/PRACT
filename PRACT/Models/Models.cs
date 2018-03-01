@@ -18,10 +18,18 @@ namespace PRACT.Models
         public PRODUCT Product { get; set; }
         public NODE[] Playlists { get; set; }
         public COLLECTION Collection { get; set; }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public DJ_PLAYLISTS()
         {
             Collection = new COLLECTION();
         }
+        /// <summary>
+        /// Constructor based on a Rekordbox.xml file
+        /// </summary>
+        /// <param name="RekordboxXMLFullPath">Full path to the Rekordbox.xml file</param>
         public DJ_PLAYLISTS(string RekordboxXMLFullPath)
         {
             this.RekordboxXMLFullPath = RekordboxXMLFullPath;
@@ -202,10 +210,25 @@ namespace PRACT.Models
         /// - Same title and same artist
         /// - No title and/or no artist
         /// </summary>
-        public List<TRACK> UnTagged
+        public List<TRACK> Untagged
         {
-            get;
-            private set;
+            get
+            {
+                if(_Untagged == null)
+                {
+                    _Untagged =
+                    (from t in Collection.Tracks
+                     where t.Artist == t.Name
+                        || string.IsNullOrWhiteSpace(t.Artist)
+                        || string.IsNullOrWhiteSpace(t.Name)
+                        || t.Name.ToUpperInvariant().Contains("VARIOUS")
+                        || t.Artist.ToUpperInvariant().Contains("VARIOUS")
+                    orderby t.Location
+                    select t).ToList();
+                }
+                return _Untagged;
+            }
+            
         }
 
         public List<TRACK> Missing
@@ -215,7 +238,7 @@ namespace PRACT.Models
                 if(_Missing == null)
                 {
                     _Missing = new List<TRACK>();
-                    foreach(TRACK t in Collection.Tracks)
+                    foreach(TRACK t in Collection.Tracks.OrderBy(t=>t.Location))
                     {
                         if (!t.Exists)
                             _Missing.Add(t);
@@ -264,6 +287,7 @@ namespace PRACT.Models
         private List<TRACK> _Duplicates = null;
         private List<TRACK> _UnAnalyzed = null;
         private List<TRACK> _Missing = null;
+        private List<TRACK> _Untagged = null;
     }
 
     public class PRODUCT
@@ -329,6 +353,7 @@ namespace PRACT.Models
                 return new FileInfo(PlaylistHelper.LocationCleanUp(Location)).Exists;
             }
         }
+        
     }
 
     public class TEMPO
