@@ -73,6 +73,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="README.md" />
     <None Include="Samples\Pop.m3u8" />
   </ItemGroup>
   <ItemGroup>
