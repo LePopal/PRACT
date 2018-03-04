@@ -30,7 +30,6 @@ namespace PRACT
                 , CommandOptionType.SingleValue);
             CommandOption argOutputDir = cmd.Option("-o | --outputdir <value>", "Destination folder where to write the playlists"
                 , CommandOptionType.SingleValue);
-
             
             cmd.OnExecute(() =>
             {
@@ -42,18 +41,26 @@ namespace PRACT
                     Destination = Path.Combine(argOutputDir.Value(), "Orphans.m3u8");
                     Console.WriteLine("Writing Orphans playlist to {0}...", Destination);
                     PlaylistHelper.WritePlaylist(m2.Orphans, Destination);
+
                     Destination = Path.Combine(argOutputDir.Value(), "Duplicates.m3u8");
                     Console.WriteLine("Writing Duplicates playlist to {0}...", Destination);
                     PlaylistHelper.WritePlaylist(m2.Duplicates, Destination);
+
                     Destination = Path.Combine(argOutputDir.Value(), "Unanalyzed.m3u8");
                     Console.WriteLine("Writing Unanalyzed playlist to {0}...", Destination);
                     PlaylistHelper.WritePlaylist(m2.UnAnalyzed, Destination);
+#if !DEBUG
                     Destination = Path.Combine(argOutputDir.Value(), "Missing.m3u8");
                     Console.WriteLine("Writing Missing playlist to {0}...", Destination);
                     PlaylistHelper.WritePlaylist(m2.Missing, Destination);
+#endif
                     Destination = Path.Combine(argOutputDir.Value(), "Untagged.m3u8");
                     Console.WriteLine("Writing Untagged playlist to {0}...", Destination);
                     PlaylistHelper.WritePlaylist(m2.Untagged, Destination);
+
+                    Destination = Path.Combine(argOutputDir.Value(), "Unreferenced.m3u8");
+                    Console.WriteLine("Writing Unreferenced playlist to {0}...", Destination);
+                    PlaylistHelper.WritePlaylist(m2.Unreferenced(@"M:\_Electro\DJ"), Destination);
                     Console.WriteLine("Job's finished !");
                     return 0;
                 }
