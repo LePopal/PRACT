@@ -198,6 +198,7 @@ namespace PRACT.Models
                         (
                         from t in Collection.Tracks
                         where t.PositionMark.Count() == 1
+                        orderby t.Location
                         select t
                         ).ToList();
                 }
@@ -258,8 +259,9 @@ namespace PRACT.Models
             return (
                 from s in PlaylistHelper.MusicFiles(Dir)
                 where !(from t in Collection.Tracks
-                        select PlaylistHelper.LocationCleanUp(t.Location))
-                         .Contains(s)
+                        select 
+                        PlaylistHelper.LocationCleanUp(t.Location.ToUpper()))
+                         .Contains(s.ToUpper())
                 orderby s
                 select s
                 
@@ -282,6 +284,7 @@ namespace PRACT.Models
                 tmp.Add(
                     (from t in Collection.Tracks
                     where t.TrackID == i
+                    orderby t.Location
                     select t).FirstOrDefault()
                     );
             }
