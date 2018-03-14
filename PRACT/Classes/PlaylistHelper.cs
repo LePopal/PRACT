@@ -26,6 +26,39 @@ namespace PRACT.Classes
             sw.Flush();
             sw.Close();
         }
+
+        public static void WritePlaylist(List<string> Playlist, string Destination)
+        {
+            StreamWriter sw = new StreamWriter(Destination, false, Encoding.UTF8);
+            foreach (string s in Playlist)
+            {
+                sw.WriteLine(s);
+            }
+            sw.Flush();
+            sw.Close();
+        }
+
+        public static List<string> MusicFiles(string Dir)
+        {
+            List<string> tmp = new List<string>();
+            MusicFiles(Dir, tmp);
+            return tmp;
+        }
+
+        private static void MusicFiles(string Dir, List<string> MusicFilesList)
+        {
+            foreach (string d in Directory.GetDirectories(Dir))
+            {
+                foreach (string f in Directory.GetFiles(d))
+                {
+                    if (MusicFileExtensions.Any(x => f.EndsWith(x)))
+                        MusicFilesList.Add(f);
+                }
+                MusicFiles(d, MusicFilesList);
+            }
+        }
+
+        public static string[] MusicFileExtensions = { ".mp3", ".wav", ".flac" };
     }
 
     

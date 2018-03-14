@@ -36,7 +36,7 @@ namespace PRACT.Models
             XDocument xdoc = XDocument.Load(RekordboxXMLFullPath);
 
             DJ_PLAYLISTS djp = (from x in xdoc.Descendants("DJ_PLAYLISTS")
-             select new DJ_PLAYLISTS
+            select new DJ_PLAYLISTS
              {
                  Version = (string)x.Attribute("Version"),
                  Product =
@@ -198,6 +198,7 @@ namespace PRACT.Models
                         (
                         from t in Collection.Tracks
                         where t.PositionMark.Count() == 1
+                        orderby t.Location
                         select t
                         ).ToList();
                 }
@@ -249,6 +250,28 @@ namespace PRACT.Models
         }
 
         /// <summary>
+        /// Recursively scans for music files present in a directory but absent from the Rekordbox Library
+        /// </summary>
+        /// <param name="Dir">Directory root</param>
+        /// <returns></returns>
+        public List<string> Unreferenced(string Dir)
+        {
+            return (
+                from s in PlaylistHelper.MusicFiles(Dir)
+                where !(from t in Collection.Tracks
+                        select 
+                        PlaylistHelper.LocationCleanUp(t.Location.ToUpper()))
+                         .Contains(s.ToUpper())
+                orderby s
+                select s
+                
+                ).ToList();
+        }
+
+        
+
+
+        /// <summary>
         /// Provides a new list of TRACK objects based on a list of Track IDs
         /// </summary>
         /// <param name="Tracks">List of track IDs</param>
@@ -261,6 +284,7 @@ namespace PRACT.Models
                 tmp.Add(
                     (from t in Collection.Tracks
                     where t.TrackID == i
+                    orderby t.Location
                     select t).FirstOrDefault()
                     );
             }
