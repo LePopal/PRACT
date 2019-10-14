@@ -268,8 +268,6 @@ namespace PRACT.Models
                 ).ToList();
         }
 
-        
-
 
         /// <summary>
         /// Provides a new list of TRACK objects based on a list of Track IDs
@@ -374,7 +372,15 @@ namespace PRACT.Models
         {
             get
             {
-                return new FileInfo(PlaylistHelper.LocationCleanUp(Location)).Exists;
+                return new FileInfo(CleanLocation).Exists;
+            }
+        }
+
+        public string CleanLocation
+        {
+            get
+            {
+                return PlaylistHelper.LocationCleanUp(Location);
             }
         }
         
