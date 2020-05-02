@@ -76,7 +76,8 @@ namespace PRACT
 
             cmd.OnExecute(() =>
             {
-                int returnValue = ProcessRbXml(argRkbXml, argCommand, argOutputDir, argPlaylists, argMusicDir);
+                Parameters prms;
+                int returnValue = ProcessRbXml(argRkbXml, argCommand, argOutputDir, argPlaylists, argMusicDir, out prms);
                 switch(returnValue)
                 {
                     case -1:
@@ -186,10 +187,13 @@ namespace PRACT
                             Console.WriteLine("Ignoring Missing playlist : no music folder provided !");
                     }
                 }
+                parameters = prms;
+
                 return 0;
             }
             else
             {
+                parameters = null;
                 return -1;
             }
         }
