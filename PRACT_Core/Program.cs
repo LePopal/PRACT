@@ -7,7 +7,7 @@ using System.Linq;
 using System.IO;
 using PRACT.Classes;
 
-namespace PRACT_Core
+namespace PRACT
 {
     class Program
     {
@@ -21,6 +21,8 @@ namespace PRACT_Core
 
         private const string COMMAND_GENERATE_PLAYLISTS = "p";
         private const string COMMAND_SHOW_STATISTICS = "s";
+        private const string COMMAND_GENERATE_SCRIPTS = "b";
+
         static void Main(string[] args)
         {
 
@@ -65,7 +67,8 @@ namespace PRACT_Core
                                     "\n\t{0} = Generate playlists (default), " +
                                     "\n\t{1} = Show Statistics"
                                     , COMMAND_GENERATE_PLAYLISTS
-                                    , COMMAND_SHOW_STATISTICS)
+                                    , COMMAND_SHOW_STATISTICS
+                                    , COMMAND_GENERATE_SCRIPTS)
                     , CommandOptionType.SingleValue);
             cmd.HelpOption("-? | -h | --help");
             cmd.VersionOption("-v | --version", fvi.FileVersion);
@@ -95,10 +98,29 @@ namespace PRACT_Core
         }
 
         static int ProcessRbXml(CommandOption argRkbXml, CommandOption argCommand, CommandOption argOutputDir, CommandOption argPlaylists,
-            CommandOption argMusicDir)
+            CommandOption argMusicDir, out Parameters parameters)
         {
+            Parameters prms = new Parameters();
             if (argRkbXml.HasValue())
             {
+                prms.InputRekordboxXML = argRkbXml.Value();
+                prms.ShowStatisticsCommand = argCommand.HasValue() && argCommand.Value() == COMMAND_SHOW_STATISTICS;
+                prms.GeneratePlaylistsCommand = argCommand.HasValue() && argCommand.Value() == COMMAND_GENERATE_PLAYLISTS;
+                prms.GenerateScriptsCommand = argCommand.HasValue() && argCommand.Value() == COMMAND_GENERATE_PLAYLISTS;
+
+                if (argPlaylists.HasValue() && argOutputDir.HasValue())
+                {
+                    string Playlists = argPlaylists.Value().ToLowerInvariant();
+                    prms.GeneratePlaylistsCommand = true;
+                    prms.OutputDirectory = argOutputDir.Value();
+                    prms.OrphanedPlaylistOption = Playlists.Contains(PLAYLIST_TOKEN_ORPHANS);
+                    prms.DuplicatePlaylistOption = Playlists.Contains(PLAYLIST_TOKEN_DUPLICATES);
+                    prms.UnanalyzedPlaylistOption = Playlists.Contains(PLAYLIST_TOKEN_UNANALYZED);
+                    prms.MissingPlaylistOption = Playlists.Contains(PLAYLIST_TOKEN_MISSING);
+                    prms.UntaggedPlaylistOption = Playlists.Contains(PLAYLIST_TOKEN_UNTAGGED);
+                    prms.UnreferencedPlaylistOption = Playlists.Contains(PLAYLIST_TOKEN_UNREFERENCED);
+                }
+
                 Console.WriteLine("Loading Rekordbox.xml file in {0}...", argRkbXml.Value());
                 DJ_PLAYLISTS m2 = new DJ_PLAYLISTS(argRkbXml.Value());
 
