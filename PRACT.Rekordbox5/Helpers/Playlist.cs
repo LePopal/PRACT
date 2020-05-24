@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PRACT.Rekordbox5.Helpers
 {
-    public static class PlaylistHelper
+    public class PlaylistHelper
     {
         public const string FILENAME_ORPHANS = "Orphans.m3u8";
         public const string FILENAME_DUPLICATES = "Duplicates.m3u8";
@@ -22,12 +22,51 @@ namespace PRACT.Rekordbox5.Helpers
         public const string PROCESS_TITLE_MISSING = "Processing missing tracks...";
         public const string PROCESS_TITLE_UNREFERENCED = "Processing unreferenced files...";
         public const string PROCESS_TITLE_UNTAGGED = "Processing untagged tracks...";
+
+        public enum PlaylistOptions { Orphans, Duplicates, Unanalyzed, Missing, Unreferenced, Untagged }
+        public string OutputFolder { get; set; }
+        public string MusicFolder { get; set; }
+        public DJ_PLAYLISTS Playlists { get; set; }
+        public PlaylistHelper(string OutputFolder, string MusicFolder, DJ_PLAYLISTS Playlists)
+        {
+            this.OutputFolder = OutputFolder;
+            this.MusicFolder = MusicFolder;
+            if (Playlists == null)
+            {
+                throw new Exception("Playlists are undefined");
+            }
+            this.Playlists = Playlists;
+        }
+
         public static string LocationCleanUp(string Location)
         {
             //Sample : file://localhost/M:/_Pop/Michael%20Jackson/1995%20-%20HIStory_%20Past,%20Present%20and%20Future,%20Book%20I/01%20-%20Billie%20Jean.mp3
             return new Uri(Location).LocalPath.Replace(@"\\localhost\", string.Empty);
         }
-
+        public void WritePlaylist(PlaylistOptions playlist)
+        {
+            switch(playlist)
+            {
+                case PlaylistOptions.Duplicates:
+                    WritePlaylist(Playlists.Duplicates, Path.Combine(OutputFolder, FILENAME_DUPLICATES));
+                    break;
+                case PlaylistOptions.Missing:
+                    WritePlaylist(Playlists.Missing, Path.Combine(OutputFolder, FILENAME_MISSING));
+                    break;
+                case PlaylistOptions.Orphans:
+                    WritePlaylist(Playlists.Orphans, Path.Combine(OutputFolder, FILENAME_ORPHANS));
+                    break;
+                case PlaylistOptions.Unanalyzed:
+                    WritePlaylist(Playlists.UnAnalyzed, Path.Combine(OutputFolder, FILENAME_UNANALYZED));
+                    break;
+                case PlaylistOptions.Unreferenced:
+                    WritePlaylist(Playlists.Unreferenced(MusicFolder), Path.Combine(OutputFolder, FILENAME_UNREFERENCED));
+                    break;
+                case PlaylistOptions.Untagged:
+                    WritePlaylist(Playlists.Untagged, Path.Combine(OutputFolder, FILENAME_UNTAGGED));
+                    break;
+            }
+        }
         public static void WritePlaylist(List<TRACK> Playlist, string Destination)
         {
             StreamWriter sw = new StreamWriter(Destination, false, Encoding.UTF8);

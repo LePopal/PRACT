@@ -10,11 +10,10 @@ using System.Windows.Forms;
 
 namespace PRACT_GUI
 {
-
     public partial class MainForm : Form
     {
         private Thread exportThread;
-        protected DJ_PLAYLISTS RB5_Playlists;
+        protected PlaylistHelper PlaylistHelper;
         
         public MainForm()
         {
@@ -77,50 +76,44 @@ namespace PRACT_GUI
             if (Directory.Exists(ProgramSettings.OutputFolder)
                 && File.Exists(ProgramSettings.RekordboxXMLFile))
             {
-                if (RB5_Playlists == null)
-                    RB5_Playlists = new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile);
+                if (PlaylistHelper == null)
+                    PlaylistHelper = new PlaylistHelper(ProgramSettings.OutputFolder
+                        , ProgramSettings.MusicFolder
+                        , new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile));
 
                 if (chkDuplicates.Checked)
                 {
                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_DUPLICATES;
                     
-                    PlaylistHelper.WritePlaylist(RB5_Playlists.Duplicates,
-                        Path.Combine(ProgramSettings.OutputFolder, PlaylistHelper.FILENAME_DUPLICATES));
+                    PlaylistHelper.WritePlaylist(PlaylistHelper.PlaylistOptions.Duplicates);
                 }
                 if (chkOrphans.Checked)
                 {
                     tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_ORPHANS;
-                    PlaylistHelper.WritePlaylist(RB5_Playlists.Orphans,
-                        Path.Combine(ProgramSettings.OutputFolder, PlaylistHelper.FILENAME_ORPHANS));
+                    PlaylistHelper.WritePlaylist(PlaylistHelper.PlaylistOptions.Orphans);
                 }
                 if (chkUnanalyzed.Checked)
                 {
                     tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNANALYZED;
-                    PlaylistHelper.WritePlaylist(RB5_Playlists.UnAnalyzed,
-                        Path.Combine(ProgramSettings.OutputFolder, PlaylistHelper.FILENAME_UNANALYZED));
+                    PlaylistHelper.WritePlaylist(PlaylistHelper.PlaylistOptions.Unanalyzed);
                 }
                 if (chkMissing.Checked)
                 {
                     tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_MISSING;
-                    PlaylistHelper.WritePlaylist(RB5_Playlists.Missing,
-                        Path.Combine(ProgramSettings.OutputFolder, PlaylistHelper.FILENAME_MISSING));
+                    PlaylistHelper.WritePlaylist(PlaylistHelper.PlaylistOptions.Missing);
                 }
                 if (chkUntagged.Checked)
                 {
                     tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNTAGGED;
-                    PlaylistHelper.WritePlaylist(RB5_Playlists.Untagged,
-                        Path.Combine(ProgramSettings.OutputFolder, PlaylistHelper.FILENAME_UNTAGGED));
+                    PlaylistHelper.WritePlaylist(PlaylistHelper.PlaylistOptions.Untagged);
                 }
                 if (chkUnreferenced.Checked)
                 {
                     tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNREFERENCED;
-                    if (Directory.Exists(ProgramSettings.MusicFolder))
-                    {
-                        PlaylistHelper.WritePlaylist(RB5_Playlists.Unreferenced(ProgramSettings.MusicFolder),
-                            Path.Combine(ProgramSettings.OutputFolder, PlaylistHelper.FILENAME_UNREFERENCED));
-                    }
+                    PlaylistHelper.WritePlaylist(PlaylistHelper.PlaylistOptions.Unreferenced);
                 }
                 tsCurrentProcess.Text = "Finished !";
+                StopProcess();
             }
         }
         private void RefreshStatusBar()
