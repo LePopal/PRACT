@@ -9,6 +9,12 @@ namespace PRACT.Rekordbox5.Helpers
 {
     public static class PlaylistHelper
     {
+        public const string FILENAME_ORPHANS = "Orphans.m3u8";
+        public const string FILENAME_DUPLICATES = "Duplicates.m3u8";
+        public const string FILENAME_UNANALYZED = "Unanalyzed.m3u8";
+        public const string FILENAME_MISSING = "Missing.m3u8";
+        public const string FILENAME_UNREFERENCED = "Unreferenced.m3u8";
+        public const string FILENAME_UNTAGGED = "Untagged.m3u8";
         public static string LocationCleanUp(string Location)
         {
             //Sample : file://localhost/M:/_Pop/Michael%20Jackson/1995%20-%20HIStory_%20Past,%20Present%20and%20Future,%20Book%20I/01%20-%20Billie%20Jean.mp3

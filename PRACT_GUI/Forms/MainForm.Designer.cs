@@ -63,21 +63,20 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsRekordboxXMLFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.ttipMainform = new System.Windows.Forms.ToolTip(this.components);
+            this.chkOrphans = new System.Windows.Forms.CheckBox();
+            this.chkDuplicates = new System.Windows.Forms.CheckBox();
+            this.chkMissing = new System.Windows.Forms.CheckBox();
+            this.chkUntagged = new System.Windows.Forms.CheckBox();
+            this.chkUnanalyzed = new System.Windows.Forms.CheckBox();
+            this.chkUnreferenced = new System.Windows.Forms.CheckBox();
+            this.btnProcess = new System.Windows.Forms.Button();
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.gtpCommand = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.btnProcess = new System.Windows.Forms.Button();
-            this.progBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,7 +93,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(616, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -282,6 +281,7 @@
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
             this.customizeToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
             this.customizeToolStripMenuItem.Text = "&Customize";
+            this.customizeToolStripMenuItem.Visible = false;
             // 
             // optionsToolStripMenuItem
             // 
@@ -336,16 +336,95 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsRekordboxXMLFile});
-            this.statusStrip.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip.Location = new System.Drawing.Point(0, 320);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip.Size = new System.Drawing.Size(616, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
+            this.ttipMainform.SetToolTip(this.statusStrip, "Selected Rekordbox XML File");
             // 
             // tsRekordboxXMLFile
             // 
             this.tsRekordboxXMLFile.Name = "tsRekordboxXMLFile";
             this.tsRekordboxXMLFile.Size = new System.Drawing.Size(0, 15);
+            // 
+            // chkOrphans
+            // 
+            this.chkOrphans.AutoSize = true;
+            this.chkOrphans.Location = new System.Drawing.Point(32, 31);
+            this.chkOrphans.Name = "chkOrphans";
+            this.chkOrphans.Size = new System.Drawing.Size(106, 29);
+            this.chkOrphans.TabIndex = 2;
+            this.chkOrphans.Text = "Orphans";
+            this.ttipMainform.SetToolTip(this.chkOrphans, "Orphans are tracks not listed in any playlist");
+            this.chkOrphans.UseVisualStyleBackColor = true;
+            // 
+            // chkDuplicates
+            // 
+            this.chkDuplicates.AutoSize = true;
+            this.chkDuplicates.Location = new System.Drawing.Point(32, 67);
+            this.chkDuplicates.Name = "chkDuplicates";
+            this.chkDuplicates.Size = new System.Drawing.Size(120, 29);
+            this.chkDuplicates.TabIndex = 3;
+            this.chkDuplicates.Text = "Duplicates";
+            this.ttipMainform.SetToolTip(this.chkDuplicates, "Duplicates are track with the same artist and title");
+            this.chkDuplicates.UseVisualStyleBackColor = true;
+            // 
+            // chkMissing
+            // 
+            this.chkMissing.AutoSize = true;
+            this.chkMissing.Location = new System.Drawing.Point(32, 103);
+            this.chkMissing.Name = "chkMissing";
+            this.chkMissing.Size = new System.Drawing.Size(99, 29);
+            this.chkMissing.TabIndex = 4;
+            this.chkMissing.Text = "Missing";
+            this.ttipMainform.SetToolTip(this.chkMissing, "Tracks that can\'t be found on disk");
+            this.chkMissing.UseVisualStyleBackColor = true;
+            // 
+            // chkUntagged
+            // 
+            this.chkUntagged.AutoSize = true;
+            this.chkUntagged.Location = new System.Drawing.Point(32, 139);
+            this.chkUntagged.Name = "chkUntagged";
+            this.chkUntagged.Size = new System.Drawing.Size(117, 29);
+            this.chkUntagged.TabIndex = 5;
+            this.chkUntagged.Text = "Untagged";
+            this.ttipMainform.SetToolTip(this.chkUntagged, "Tracks without metadata (ID3)");
+            this.chkUntagged.UseVisualStyleBackColor = true;
+            // 
+            // chkUnanalyzed
+            // 
+            this.chkUnanalyzed.AutoSize = true;
+            this.chkUnanalyzed.Location = new System.Drawing.Point(32, 175);
+            this.chkUnanalyzed.Name = "chkUnanalyzed";
+            this.chkUnanalyzed.Size = new System.Drawing.Size(129, 29);
+            this.chkUnanalyzed.TabIndex = 6;
+            this.chkUnanalyzed.Text = "Unanalyzed";
+            this.ttipMainform.SetToolTip(this.chkUnanalyzed, "Tracks that were not properly prepared and analyzed");
+            this.chkUnanalyzed.UseVisualStyleBackColor = true;
+            // 
+            // chkUnreferenced
+            // 
+            this.chkUnreferenced.AutoSize = true;
+            this.chkUnreferenced.Location = new System.Drawing.Point(32, 211);
+            this.chkUnreferenced.Name = "chkUnreferenced";
+            this.chkUnreferenced.Size = new System.Drawing.Size(143, 29);
+            this.chkUnreferenced.TabIndex = 7;
+            this.chkUnreferenced.Text = "Unreferenced";
+            this.ttipMainform.SetToolTip(this.chkUnreferenced, "Tracks from the Music folder that have not been imported in the library");
+            this.chkUnreferenced.UseVisualStyleBackColor = true;
+            this.chkUnreferenced.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // btnProcess
+            // 
+            this.btnProcess.Location = new System.Drawing.Point(12, 242);
+            this.btnProcess.Name = "btnProcess";
+            this.btnProcess.Size = new System.Drawing.Size(112, 34);
+            this.btnProcess.TabIndex = 10;
+            this.btnProcess.Text = "Process";
+            this.ttipMainform.SetToolTip(this.btnProcess, "Start the analysis");
+            this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
             // openRekordboxXML
             // 
@@ -353,86 +432,25 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox6);
-            this.groupBox1.Controls.Add(this.checkBox5);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(438, 78);
+            this.groupBox1.Controls.Add(this.chkOrphans);
+            this.groupBox1.Controls.Add(this.chkDuplicates);
+            this.groupBox1.Controls.Add(this.chkMissing);
+            this.groupBox1.Controls.Add(this.chkUntagged);
+            this.groupBox1.Controls.Add(this.chkUnanalyzed);
+            this.groupBox1.Controls.Add(this.chkUnreferenced);
+            this.groupBox1.Location = new System.Drawing.Point(318, 48);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(289, 239);
+            this.groupBox1.Size = new System.Drawing.Size(214, 252);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(106, 19);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(106, 29);
-            this.checkBox6.TabIndex = 2;
-            this.checkBox6.Text = "Orphans";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(106, 55);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(120, 29);
-            this.checkBox5.TabIndex = 3;
-            this.checkBox5.Text = "Duplicates";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(106, 91);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(99, 29);
-            this.checkBox4.TabIndex = 4;
-            this.checkBox4.Text = "Missing";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(106, 127);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(117, 29);
-            this.checkBox3.TabIndex = 5;
-            this.checkBox3.Text = "Untagged";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(106, 163);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(129, 29);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Unanalyzed";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(106, 199);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(143, 29);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Unreferenced";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // gtpCommand
             // 
             this.gtpCommand.Controls.Add(this.radioButton3);
             this.gtpCommand.Controls.Add(this.radioButton2);
             this.gtpCommand.Controls.Add(this.radioButton1);
-            this.gtpCommand.Location = new System.Drawing.Point(51, 78);
+            this.gtpCommand.Location = new System.Drawing.Point(12, 48);
             this.gtpCommand.Name = "gtpCommand";
             this.gtpCommand.Size = new System.Drawing.Size(300, 150);
             this.gtpCommand.TabIndex = 9;
@@ -472,33 +490,19 @@
             this.radioButton1.Text = "Generate M3U8 Playlists";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // btnProcess
-            // 
-            this.btnProcess.Location = new System.Drawing.Point(340, 334);
-            this.btnProcess.Name = "btnProcess";
-            this.btnProcess.Size = new System.Drawing.Size(112, 34);
-            this.btnProcess.TabIndex = 10;
-            this.btnProcess.Text = "Process";
-            this.btnProcess.UseVisualStyleBackColor = true;
-            // 
-            // progBar
-            // 
-            this.progBar.Location = new System.Drawing.Point(12, 392);
-            this.progBar.Name = "progBar";
-            this.progBar.Size = new System.Drawing.Size(776, 34);
-            this.progBar.TabIndex = 11;
-            // 
             // MainForm
             // 
+            this.AcceptButton = this.btnProcess;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.progBar);
+            this.ClientSize = new System.Drawing.Size(616, 342);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.gtpCommand);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -550,12 +554,12 @@
         private System.Windows.Forms.ToolTip ttipMainform;
         private System.Windows.Forms.OpenFileDialog openRekordboxXML;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkOrphans;
+        private System.Windows.Forms.CheckBox chkDuplicates;
+        private System.Windows.Forms.CheckBox chkMissing;
+        private System.Windows.Forms.CheckBox chkUntagged;
+        private System.Windows.Forms.CheckBox chkUnanalyzed;
+        private System.Windows.Forms.CheckBox chkUnreferenced;
         private System.Windows.Forms.GroupBox gtpCommand;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -563,7 +567,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tsRekordboxXMLFile;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button btnProcess;
-        private System.Windows.Forms.ProgressBar progBar;
     }
 }
 

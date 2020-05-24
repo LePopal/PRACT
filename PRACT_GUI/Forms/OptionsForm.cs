@@ -73,7 +73,8 @@ namespace PRACT_OBS
 
             ProgramSettings.CleanFilesAtShutDown = chkCleanExit.Checked;
             ProgramSettings.CleanFilesAtStartup = chkCleanStartup.Checked;
-
+            ProgramSettings.MusicFolder = txtMusicFolder.Text;
+            ProgramSettings.RekordboxXMLFile = txtRekordboxXMLFile.Text;
 
             this.Close();
         }
