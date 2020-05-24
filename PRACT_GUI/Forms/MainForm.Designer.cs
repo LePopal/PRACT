@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
+            System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
+            System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,13 +59,10 @@
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsRekordboxXMLFile = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsCurrentProcess = new System.Windows.Forms.ToolStripStatusLabel();
             this.ttipMainform = new System.Windows.Forms.ToolTip(this.components);
             this.chkOrphans = new System.Windows.Forms.CheckBox();
             this.chkDuplicates = new System.Windows.Forms.CheckBox();
@@ -77,6 +78,10 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -293,10 +298,10 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator5,
+            contentsToolStripMenuItem,
+            indexToolStripMenuItem,
+            searchToolStripMenuItem,
+            toolStripSeparator5,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
@@ -304,41 +309,43 @@
             // 
             // contentsToolStripMenuItem
             // 
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
-            this.contentsToolStripMenuItem.Text = "&Contents";
+            contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
+            contentsToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+            contentsToolStripMenuItem.Text = "&Contents";
             // 
             // indexToolStripMenuItem
             // 
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
-            this.indexToolStripMenuItem.Text = "&Index";
+            indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            indexToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+            indexToolStripMenuItem.Text = "&Index";
             // 
             // searchToolStripMenuItem
             // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
-            this.searchToolStripMenuItem.Text = "&Search";
+            searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            searchToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+            searchToolStripMenuItem.Text = "&Search";
             // 
             // toolStripSeparator5
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(182, 6);
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new System.Drawing.Size(182, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
             this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsRekordboxXMLFile});
-            this.statusStrip.Location = new System.Drawing.Point(0, 320);
+            this.tsRekordboxXMLFile,
+            this.tsCurrentProcess});
+            this.statusStrip.Location = new System.Drawing.Point(0, 310);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(616, 22);
+            this.statusStrip.Size = new System.Drawing.Size(616, 32);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             this.ttipMainform.SetToolTip(this.statusStrip, "Selected Rekordbox XML File");
@@ -346,7 +353,13 @@
             // tsRekordboxXMLFile
             // 
             this.tsRekordboxXMLFile.Name = "tsRekordboxXMLFile";
-            this.tsRekordboxXMLFile.Size = new System.Drawing.Size(0, 15);
+            this.tsRekordboxXMLFile.Size = new System.Drawing.Size(0, 25);
+            // 
+            // tsCurrentProcess
+            // 
+            this.tsCurrentProcess.Name = "tsCurrentProcess";
+            this.tsCurrentProcess.Size = new System.Drawing.Size(41, 25);
+            this.tsCurrentProcess.Text = "Idle";
             // 
             // chkOrphans
             // 
@@ -413,7 +426,6 @@
             this.chkUnreferenced.Text = "Unreferenced";
             this.ttipMainform.SetToolTip(this.chkUnreferenced, "Tracks from the Music folder that have not been imported in the library");
             this.chkUnreferenced.UseVisualStyleBackColor = true;
-            this.chkUnreferenced.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // btnProcess
             // 
@@ -460,6 +472,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.Enabled = false;
             this.radioButton3.Location = new System.Drawing.Point(16, 100);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(154, 29);
@@ -471,6 +484,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Enabled = false;
             this.radioButton2.Location = new System.Drawing.Point(16, 65);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(165, 29);
@@ -505,6 +519,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -567,6 +582,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsRekordboxXMLFile;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button btnProcess;
+        private System.Windows.Forms.ToolStripStatusLabel tsCurrentProcess;
     }
 }
 

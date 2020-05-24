@@ -15,6 +15,13 @@ namespace PRACT.Rekordbox5.Helpers
         public const string FILENAME_MISSING = "Missing.m3u8";
         public const string FILENAME_UNREFERENCED = "Unreferenced.m3u8";
         public const string FILENAME_UNTAGGED = "Untagged.m3u8";
+
+        public const string PROCESS_TITLE_ORPHANS = "Processing orphans...";
+        public const string PROCESS_TITLE_DUPLICATES = "Processing duplicates...";
+        public const string PROCESS_TITLE_UNANALYZED = "Processing unanalyzed tracks...";
+        public const string PROCESS_TITLE_MISSING = "Processing missing tracks...";
+        public const string PROCESS_TITLE_UNREFERENCED = "Processing unreferenced files...";
+        public const string PROCESS_TITLE_UNTAGGED = "Processing untagged tracks...";
         public static string LocationCleanUp(string Location)
         {
             //Sample : file://localhost/M:/_Pop/Michael%20Jackson/1995%20-%20HIStory_%20Past,%20Present%20and%20Future,%20Book%20I/01%20-%20Billie%20Jean.mp3
