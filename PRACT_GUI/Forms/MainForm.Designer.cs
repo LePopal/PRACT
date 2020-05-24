@@ -93,23 +93,27 @@
             contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             contentsToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
             contentsToolStripMenuItem.Text = "&Contents";
+            contentsToolStripMenuItem.Visible = false;
             // 
             // indexToolStripMenuItem
             // 
             indexToolStripMenuItem.Name = "indexToolStripMenuItem";
             indexToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
             indexToolStripMenuItem.Text = "&Index";
+            indexToolStripMenuItem.Visible = false;
             // 
             // searchToolStripMenuItem
             // 
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             searchToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
             searchToolStripMenuItem.Text = "&Search";
+            searchToolStripMenuItem.Visible = false;
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
             toolStripSeparator5.Size = new System.Drawing.Size(182, 6);
+            toolStripSeparator5.Visible = false;
             // 
             // menuStrip1
             // 
@@ -516,6 +520,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Form1";

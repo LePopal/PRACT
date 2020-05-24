@@ -1,35 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define PRACT_GUI_TargetDir=$(var.PRACT_GUI.TargetDir)?>
-	<Product Id="*" Name="Installer" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define PRACT_GUI_TargetDir=$(var.PRACT_GUI.TargetDir)?>
+	<Product Id="dd9c5380-7eb4-4e43-83a5-10d39ceeb50c" Name="PRACT" Language="1033" Version="0.5.0.0" Manufacturer="Popal" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="PRACT, Popal's Rekordbox Analysis and Clean up Tool"/>
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+		<MediaTemplate EmbedCab="yes"/>
 
-		<Feature Id="ProductFeature" Title="Installer" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
+    <Icon Id="MyShortcutIcon" SourceFile="$(var.ProjectDir)app.ico"/>
+
+    <Property Id="ARPPRODUCTICON" Value="MyShortcutIcon" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)ApacheLicense2.0.rtf"/>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"></Property>
+    <UIRef Id="WixUI_InstallDir"/>
+    <UIRef Id="WixUI_ErrorProgressText"/>
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank your for installing PRACT."></Property>
+    
+		<Feature Id="ProductFeature" Title="PRACT Installer" Level="1">
 			<ComponentGroupRef Id="ProgramFilesFolder_files" />
+      <ComponentGroupRef Id="ProgramFilesFolder_WinX64Native" />
+      <ComponentGroupRef Id="ProgramFilesFolder_WinX86Native" />
+      <ComponentRef Id="ApplicationShortcut"/>
+      <ComponentRef Id="ApplicationDesktopShortcut"/>
 		</Feature>
 	</Product>
 
 	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Installer" />
-			</Directory>
-		</Directory>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ManufacturerFolder" Name="!(bind.property.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)">
+            <Directory Id="Runtimes" Name="runtimes">
+              <Directory Id="RuntimesX64" Name="win-x64">
+                <Directory Id="RuntimeX64Native" Name="native">
+                  <Component Id="CreateRuntimesX64Folder" Guid="3ec86390-9804-4269-8ce1-31486ed96c1d">
+                    <CreateFolder />
+                  </Component>
+                </Directory>
+              </Directory>
+              <Directory Id="RuntimesX86" Name="win-x86">
+                <Directory Id="RuntimeX86Native" Name="native">
+                  <Component Id="CreateRuntimesX86Folder" Guid="79a229da-773f-4978-aaee-18f8c7cddbbc">
+                    <CreateFolder />
+                  </Component>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MfgStartMenuFolder" Name="!(bind.property.Manufacturer)" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id="CreateRuntimesX64Folder" Title="native" Level="1">
+      <ComponentRef Id="CreateRuntimesX64Folder"/>
+    </Feature>
+    <Feature Id="CreateRuntimesX86Folder" Title="native" Level="1">
+      <ComponentRef Id="CreateRuntimesX86Folder"/>
+    </Feature>
 	</Fragment>
 
+  <!-- Start Menu shortcut -->
+  <Fragment>
+    <DirectoryRef Id="MfgStartMenuFolder">
+      <Component Id="ApplicationShortcut" Guid="fe8aa1f2-d10d-43ab-bfd4-daa42f19b2d7">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="!(bind.property.ProductName)"
+                  Description="Clean up your Rekordbox collection with PRACT!"
+                  Directory="MfgStartMenuFolder"
+                  Target="[INSTALLFOLDER]PRACT.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="MyShortcutIcon" />
+        <RemoveFolder Id="RemoveMfgStartMenuFolder"
+                      Directory="MfgStartMenuFolder"
+                      On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software\Popal\PRACT\ProgramMenuShortcut"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationDesktopShortcut" Guid="3c429430-c353-4ebd-a309-61f74bb178a8">
+        <Shortcut Id="MyDesktopShortcut"
+                  Name="!(name.property.ProductName)"
+                  Description="Clean up your Rekordbox collection with PRACT!"
+                  Directory="DesktopFolder"
+                  Target="[INSTALLFOLDER]PRACT.exe"
+                  Icon="MyShortcutIcon"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software\Popal\PRACT\DesktopShortcut"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  
+ 
+
 	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
-	<Fragment>
-	  <ComponentGroup Id="ProgramFilesFolder_files" Directory="ProgramFilesFolder">
+	  <ComponentGroup Id="ProgramFilesFolder_files" Directory="INSTALLFOLDER">
+      <Component Id="PRACT.exe" Guid="96d02bec-cf1f-45d5-9c85-92db60356d90">
+        <File Id="PRACT.exe" Name="PRACT.exe" Source="$(var.PRACT_GUI_TargetDir)PRACT.exe" KeyPath="yes" />
+      </Component>
 	    <Component Id="PRACT.runtimeconfig.json" Guid="e8ae9eca-9a8d-418b-8dd4-475432295cad">
 	      <File Id="PRACT.runtimeconfig.json" Name="PRACT.runtimeconfig.json" Source="$(var.PRACT_GUI_TargetDir)PRACT.runtimeconfig.json" />
 	    </Component>
@@ -109,5 +195,18 @@
 	      <File Id="Microsoft.Extensions.DependencyModel.dll" Name="Microsoft.Extensions.DependencyModel.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.DependencyModel.dll" />
 	    </Component>
 	  </ComponentGroup>
+
+    <ComponentGroup Id="ProgramFilesFolder_WinX64Native" Directory="RuntimeX64Native" >
+      <Component Id="e_sqlcipher64.dll" Guid="dc23c796-a149-4e25-9df7-19b8034b14fb">
+        <CreateFolder Directory ="RuntimeX64Native"></CreateFolder>
+        <File Id="e_sqlcipher64.dll" Name="e_sqlcipher.dll" Source="$(var.PRACT_GUI_TargetDir)runtimes\win-x64\native\e_sqlcipher.dll" />
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="ProgramFilesFolder_WinX86Native" Directory="RuntimeX86Native" >
+      <Component Id="e_sqlcipher86.dll" Guid="2e4434c9-71cf-410f-9517-6f6ed6f4d47d">
+        <CreateFolder Directory ="RuntimeX64Native"></CreateFolder>
+        <File Id="e_sqlcipher86.dll" Name="e_sqlcipher.dll" Source="$(var.PRACT_GUI_TargetDir)runtimes\win-x86\native\e_sqlcipher.dll" />
+      </Component>
+    </ComponentGroup>
 	</Fragment>
 </Wix>

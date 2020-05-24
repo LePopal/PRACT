@@ -11,11 +11,13 @@
     <AssemblyVersion>0.5.0.0</AssemblyVersion>
     <FileVersion>0.5.0.0</FileVersion>
     <Version>0.5.0</Version>
+    <Authors>Popal</Authors>
+    <Company>Popal</Company>
+    <PackageProjectUrl>https://github.com/LePopal/PRACT</PackageProjectUrl>
+    <PackageIcon>Icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/LePopal/PRACT</RepositoryUrl>
+    <Description>PRACT is an Open Source program (Apache 2.0) designed to help you to clean up and manage your Rekordbox Library. It can help you find duplicate tracks, tracks not listed in any playlists and more.</Description>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Pictures\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PRACT.Rekordbox5\PRACT.Rekordbox5.csproj" />
@@ -23,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -39,6 +46,17 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+    <None Include="Pictures\Icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -87,6 +87,7 @@
             this.txtOutputFolder.Name = "txtOutputFolder";
             this.txtOutputFolder.Size = new System.Drawing.Size(928, 31);
             this.txtOutputFolder.TabIndex = 2;
+            this.ttipOptions.SetToolTip(this.txtOutputFolder, "Folder where to output the generated playlists");
             // 
             // btnOutputFolder
             // 
@@ -95,12 +96,13 @@
             this.btnOutputFolder.Size = new System.Drawing.Size(55, 34);
             this.btnOutputFolder.TabIndex = 3;
             this.btnOutputFolder.Text = "...";
+            this.ttipOptions.SetToolTip(this.btnOutputFolder, "Choose your output folder");
             this.btnOutputFolder.UseVisualStyleBackColor = true;
             this.btnOutputFolder.Click += new System.EventHandler(this.btnOutputFolder_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(424, 474);
+            this.btnOK.Location = new System.Drawing.Point(420, 249);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(112, 34);
             this.btnOK.TabIndex = 4;
@@ -110,7 +112,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(659, 474);
+            this.btnCancel.Location = new System.Drawing.Point(655, 249);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 34);
             this.btnCancel.TabIndex = 4;
@@ -134,6 +136,7 @@
             this.txtMusicFolder.Name = "txtMusicFolder";
             this.txtMusicFolder.Size = new System.Drawing.Size(929, 31);
             this.txtMusicFolder.TabIndex = 1;
+            this.ttipOptions.SetToolTip(this.txtMusicFolder, "The folder containing your DJ Music");
             // 
             // chkMine
             // 
@@ -154,6 +157,7 @@
             this.btnRekordboxXML.Size = new System.Drawing.Size(55, 34);
             this.btnRekordboxXML.TabIndex = 3;
             this.btnRekordboxXML.Text = "...";
+            this.ttipOptions.SetToolTip(this.btnRekordboxXML, "Choose your exported Rekordbox XML");
             this.btnRekordboxXML.UseVisualStyleBackColor = true;
             this.btnRekordboxXML.Click += new System.EventHandler(this.btnRekordboxXML_Click);
             // 
@@ -163,6 +167,7 @@
             this.txtRekordboxXMLFile.Name = "txtRekordboxXMLFile";
             this.txtRekordboxXMLFile.Size = new System.Drawing.Size(867, 31);
             this.txtRekordboxXMLFile.TabIndex = 2;
+            this.ttipOptions.SetToolTip(this.txtRekordboxXMLFile, "Rekordbox collection exported as an XML File");
             // 
             // label6
             // 
@@ -192,22 +197,24 @@
             // 
             this.chkCleanStartup.AutoSize = true;
             this.chkCleanStartup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chkCleanStartup.Location = new System.Drawing.Point(13, 337);
+            this.chkCleanStartup.Location = new System.Drawing.Point(13, 171);
             this.chkCleanStartup.Name = "chkCleanStartup";
             this.chkCleanStartup.Size = new System.Drawing.Size(216, 29);
             this.chkCleanStartup.TabIndex = 9;
             this.chkCleanStartup.Text = "Clean files at Startup";
+            this.ttipOptions.SetToolTip(this.chkCleanStartup, "Future option");
             this.chkCleanStartup.UseVisualStyleBackColor = true;
             // 
             // chkCleanExit
             // 
             this.chkCleanExit.AutoSize = true;
             this.chkCleanExit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chkCleanExit.Location = new System.Drawing.Point(13, 372);
+            this.chkCleanExit.Location = new System.Drawing.Point(13, 206);
             this.chkCleanExit.Name = "chkCleanExit";
             this.chkCleanExit.Size = new System.Drawing.Size(189, 29);
             this.chkCleanExit.TabIndex = 10;
             this.chkCleanExit.Text = "Clean files on Exit";
+            this.ttipOptions.SetToolTip(this.chkCleanExit, "Future option");
             this.chkCleanExit.UseVisualStyleBackColor = true;
             // 
             // btnMusicFolder
@@ -217,6 +224,7 @@
             this.btnMusicFolder.Size = new System.Drawing.Size(55, 34);
             this.btnMusicFolder.TabIndex = 3;
             this.btnMusicFolder.Text = "...";
+            this.ttipOptions.SetToolTip(this.btnMusicFolder, "Choose your DJ Music folder");
             this.btnMusicFolder.UseVisualStyleBackColor = true;
             this.btnMusicFolder.Click += new System.EventHandler(this.btnMusicFolder_Click);
             // 
@@ -230,7 +238,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1220, 520);
+            this.ClientSize = new System.Drawing.Size(1220, 296);
             this.Controls.Add(this.btnMusicFolder);
             this.Controls.Add(this.chkCleanExit);
             this.Controls.Add(this.chkCleanStartup);

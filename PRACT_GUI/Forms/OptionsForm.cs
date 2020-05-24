@@ -34,13 +34,7 @@ namespace PRACT_OBS
             this.ttipOptions.InitialDelay = 1000;
             this.ttipOptions.ReshowDelay = 500;
             this.ttipOptions.ShowAlways = true;
-            this.ttipOptions.SetToolTip(this.txtKey, "Provide an explicit Rekordbox database encryption key");
-            this.ttipOptions.SetToolTip(this.chkMine, "Checked: tries to automatically find the encryption key");
-            this.ttipOptions.SetToolTip(this.txtOutputFolder, "Folder where to export the files to OBS");
-            this.ttipOptions.SetToolTip(this.txtMusicFolder, "How long in seconds the current track info should be displayed in OBS. 0 means forever");
-            this.ttipOptions.SetToolTip(this.txtRekordboxXMLFile, "Path to a picture to display when none wwas found or none exists");
-            this.ttipOptions.SetToolTip(this.chkCleanStartup, "Automatically delete the exported files on startup");
-            this.ttipOptions.SetToolTip(this.chkCleanStartup, "Automatically delete the exported files on shutdown");
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
