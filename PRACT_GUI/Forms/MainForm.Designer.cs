@@ -61,6 +61,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.tsRekordboxXMLFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.ttipMainform = new System.Windows.Forms.ToolTip(this.components);
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -71,12 +72,12 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.gtpCommand = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.tsRekordboxXMLFile = new System.Windows.Forms.ToolStripStatusLabel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.btnProcess = new System.Windows.Forms.Button();
+            this.progBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -132,6 +133,7 @@
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
             this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
@@ -286,6 +288,7 @@
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
             this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -339,9 +342,14 @@
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
+            // tsRekordboxXMLFile
+            // 
+            this.tsRekordboxXMLFile.Name = "tsRekordboxXMLFile";
+            this.tsRekordboxXMLFile.Size = new System.Drawing.Size(0, 15);
+            // 
             // openRekordboxXML
             // 
-            this.openRekordboxXML.Filter = "\"XML Files|*.xml\"";
+            this.openRekordboxXML.Filter = "XML Files|*.xml";
             // 
             // groupBox1
             // 
@@ -431,6 +439,17 @@
             this.gtpCommand.TabStop = false;
             this.gtpCommand.Text = "Commands";
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(16, 100);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(154, 29);
+            this.radioButton3.TabIndex = 0;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Show Statistics";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
@@ -453,36 +472,28 @@
             this.radioButton1.Text = "Generate M3U8 Playlists";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // tsRekordboxXMLFile
-            // 
-            this.tsRekordboxXMLFile.Name = "tsRekordboxXMLFile";
-            this.tsRekordboxXMLFile.Size = new System.Drawing.Size(0, 15);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(16, 100);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(154, 29);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Show Statistics";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(346, 383);
+            this.btnProcess.Location = new System.Drawing.Point(340, 334);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(112, 34);
             this.btnProcess.TabIndex = 10;
             this.btnProcess.Text = "Process";
             this.btnProcess.UseVisualStyleBackColor = true;
             // 
+            // progBar
+            // 
+            this.progBar.Location = new System.Drawing.Point(12, 392);
+            this.progBar.Name = "progBar";
+            this.progBar.Size = new System.Drawing.Size(776, 34);
+            this.progBar.TabIndex = 11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.progBar);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.gtpCommand);
             this.Controls.Add(this.groupBox1);
@@ -552,6 +563,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsRekordboxXMLFile;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button btnProcess;
+        private System.Windows.Forms.ProgressBar progBar;
     }
 }
 
