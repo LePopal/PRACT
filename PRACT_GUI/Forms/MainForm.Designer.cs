@@ -74,10 +74,12 @@
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gtpCommand = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radStats = new System.Windows.Forms.RadioButton();
+            this.radScripts = new System.Windows.Forms.RadioButton();
+            this.radPlaylists = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +88,7 @@
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gtpCommand.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentsToolStripMenuItem
@@ -125,7 +128,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(616, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1308, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -347,9 +350,9 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsRekordboxXMLFile,
             this.tsCurrentProcess});
-            this.statusStrip.Location = new System.Drawing.Point(0, 310);
+            this.statusStrip.Location = new System.Drawing.Point(0, 312);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(616, 32);
+            this.statusStrip.Size = new System.Drawing.Size(1308, 32);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             this.ttipMainform.SetToolTip(this.statusStrip, "Selected Rekordbox XML File");
@@ -463,9 +466,9 @@
             // 
             // gtpCommand
             // 
-            this.gtpCommand.Controls.Add(this.radioButton3);
-            this.gtpCommand.Controls.Add(this.radioButton2);
-            this.gtpCommand.Controls.Add(this.radioButton1);
+            this.gtpCommand.Controls.Add(this.radStats);
+            this.gtpCommand.Controls.Add(this.radScripts);
+            this.gtpCommand.Controls.Add(this.radPlaylists);
             this.gtpCommand.Location = new System.Drawing.Point(12, 48);
             this.gtpCommand.Name = "gtpCommand";
             this.gtpCommand.Size = new System.Drawing.Size(300, 150);
@@ -473,47 +476,68 @@
             this.gtpCommand.TabStop = false;
             this.gtpCommand.Text = "Commands";
             // 
-            // radioButton3
+            // radStats
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Enabled = false;
-            this.radioButton3.Location = new System.Drawing.Point(16, 100);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(154, 29);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Show Statistics";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radStats.AutoSize = true;
+            this.radStats.Location = new System.Drawing.Point(16, 100);
+            this.radStats.Name = "radStats";
+            this.radStats.Size = new System.Drawing.Size(154, 29);
+            this.radStats.TabIndex = 0;
+            this.radStats.TabStop = true;
+            this.radStats.Text = "Show Statistics";
+            this.radStats.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radScripts
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Enabled = false;
-            this.radioButton2.Location = new System.Drawing.Point(16, 65);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(165, 29);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Generate Scripts";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radScripts.AutoSize = true;
+            this.radScripts.Enabled = false;
+            this.radScripts.Location = new System.Drawing.Point(16, 65);
+            this.radScripts.Name = "radScripts";
+            this.radScripts.Size = new System.Drawing.Size(165, 29);
+            this.radScripts.TabIndex = 0;
+            this.radScripts.TabStop = true;
+            this.radScripts.Text = "Generate Scripts";
+            this.radScripts.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radPlaylists
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(16, 30);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(227, 29);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Generate M3U8 Playlists";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radPlaylists.AutoSize = true;
+            this.radPlaylists.Checked = true;
+            this.radPlaylists.Location = new System.Drawing.Point(16, 30);
+            this.radPlaylists.Name = "radPlaylists";
+            this.radPlaylists.Size = new System.Drawing.Size(227, 29);
+            this.radPlaylists.TabIndex = 0;
+            this.radPlaylists.TabStop = true;
+            this.radPlaylists.Text = "Generate M3U8 Playlists";
+            this.radPlaylists.UseVisualStyleBackColor = true;
+            // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(6, 28);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ReadOnly = true;
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLog.Size = new System.Drawing.Size(745, 212);
+            this.txtLog.TabIndex = 11;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtLog);
+            this.groupBox2.Location = new System.Drawing.Point(539, 48);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(757, 252);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Process log";
             // 
             // MainForm
             // 
             this.AcceptButton = this.btnProcess;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 342);
+            this.ClientSize = new System.Drawing.Size(1308, 344);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.gtpCommand);
             this.Controls.Add(this.groupBox1);
@@ -533,6 +557,8 @@
             this.groupBox1.PerformLayout();
             this.gtpCommand.ResumeLayout(false);
             this.gtpCommand.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,13 +607,15 @@
         private System.Windows.Forms.CheckBox chkUnanalyzed;
         private System.Windows.Forms.CheckBox chkUnreferenced;
         private System.Windows.Forms.GroupBox gtpCommand;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radScripts;
+        private System.Windows.Forms.RadioButton radPlaylists;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ToolStripStatusLabel tsRekordboxXMLFile;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radStats;
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.ToolStripStatusLabel tsCurrentProcess;
+        private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

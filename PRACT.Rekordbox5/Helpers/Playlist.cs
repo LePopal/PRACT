@@ -38,6 +38,21 @@ namespace PRACT.Rekordbox5.Helpers
             this.Playlists = Playlists;
         }
 
+        public int TrackCount
+        {
+            get
+            {
+                return Playlists.Collection.Tracks.Length;
+            }
+        }
+
+        public int PlaylistCount
+        {
+            get
+            {
+                return Playlists.Playlists.Where(p => p.Type == 1).Count();
+            }
+        }
         public static string LocationCleanUp(string Location)
         {
             //Sample : file://localhost/M:/_Pop/Michael%20Jackson/1995%20-%20HIStory_%20Past,%20Present%20and%20Future,%20Book%20I/01%20-%20Billie%20Jean.mp3
