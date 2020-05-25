@@ -23,12 +23,14 @@ PRACT is designed to run on Windows 10 with the .Net Core 3.1 Desktop Runtime an
 
 ## Usage
 
-PRACT is a command line program only and as such may require advanced Windows or MS-DOS knowledge.
+Starting from version 0.5.0 PRACT a Windows Application. It's designed to run on Windows 10 or higher.
 
+1. Install PRACT using the provided installer or the portable version
 1. In Rekordbox, export your library as an XML File : *File / Export collection in .xml Format*
-2. In Windows, open a command-line prompt : open the Start Menu and type "cmd", the choose "Command Prompt" (it should be the first of the list)
-3. Navigate to the folder where you unzipped PRACT
-4. Type "PRACT" to see the list of available options
+2. In PRACT, choose File / Open and select your exported library
+3. Choose any of the options and click "Process"
+
+The result will be a set of M3U8 playlists you just need to import in Rekordbox or a music player of your choice.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

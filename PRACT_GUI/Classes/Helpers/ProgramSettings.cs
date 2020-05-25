@@ -9,14 +9,6 @@ namespace PRACT.Classes.Helpers
 {
     public class ProgramSettings : PRACT.Rekordbox6.Helpers.ProgramSettings
     {
-        public static string InputFolder
-        {
-            get
-            {
-                return SystemPaths.MyDocumentsFolder;
-            }
-        }
-
         public static string RekordboxXMLFile
         {
             get
@@ -33,7 +25,11 @@ namespace PRACT.Classes.Helpers
         public static string MusicFolder
         {
             get
-            { return settings.MusicFolder;
+            {
+                if (string.IsNullOrWhiteSpace(settings.MusicFolder))
+                    return SystemPaths.MyMusicFolder;
+                else
+                    return settings.MusicFolder;
             }
             set
             {

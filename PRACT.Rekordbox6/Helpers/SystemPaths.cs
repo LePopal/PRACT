@@ -21,5 +21,13 @@ namespace PRACT.Rekordbox6.Classes.Helpers
                 return Environment.GetEnvironmentVariable("APPDATA");
             }
         }
+
+        public static string MyMusicFolder
+        {
+            get
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+            }
+        }
     }
 }

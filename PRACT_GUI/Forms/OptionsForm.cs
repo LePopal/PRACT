@@ -148,7 +148,7 @@ namespace PRACT_OBS
         private void btnRekordboxXML_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtRekordboxXMLFile.Text))
-                openRekordboxXML.InitialDirectory = ProgramSettings.InputFolder;
+                openRekordboxXML.InitialDirectory = ProgramSettings.MusicFolder;
             else
                 openRekordboxXML.FileName = txtRekordboxXMLFile.Text;
             openRekordboxXML.ShowDialog();

@@ -67,7 +67,11 @@ namespace PRACT_GUI
 
         private void StopProcess()
         {
-            btnProcess.Enabled = true;
+            btnProcess.Invoke((Action)delegate
+            {
+                btnProcess.Enabled = true;
+            });
+            
         }
         private void Process()
         {
@@ -114,6 +118,10 @@ namespace PRACT_GUI
                 }
                 tsCurrentProcess.Text = "Finished !";
                 StopProcess();
+            }
+            else
+            {
+                Messages.ErrorMessage($"Impossible to start processing: { ProgramSettings.RekordboxXMLFile } could not be found.");
             }
         }
         private void RefreshStatusBar()
