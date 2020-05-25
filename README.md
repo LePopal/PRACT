@@ -12,6 +12,8 @@ PRACT will analyze a  library exported as an XML File then export some m3u8 file
 
 Axel Pironio ([popal.fr](http://popal.fr)).
 
+If you would like to support my work, you can make a [small donatation through Paypal](https://www.paypal.me/jmgcuc). Thank you very much!
+
 ## Requirements
 
 PRACT is designed to run on Windows 10 with the .Net Core 3.1 Desktop Runtime and Rekordbox up to 5.x.
