@@ -1,3 +1,5 @@
+![Screenshot](https://github.com/LePopal/PRACT/blob/GUI/PRACT_GUI/Pictures/PRACT_GUI_Snapshot.png)
+
 # PRACT
 **Popal's Rekordbox.xml Analysis and Clean up Tool** is a program design to address several limitations in the Rekordbox Library management features including:
 * Listing duplicate tracks
@@ -11,6 +13,8 @@ PRACT will analyze a  library exported as an XML File then export some m3u8 file
 ## Author
 
 Axel Pironio ([popal.fr](http://popal.fr)).
+
+If you would like to support my work, you can make a [small donatation through Paypal](https://www.paypal.me/jmgcuc). Thank you very much!
 
 ## Requirements
 
