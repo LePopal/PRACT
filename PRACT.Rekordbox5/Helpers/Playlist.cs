@@ -124,6 +124,6 @@ namespace PRACT.Rekordbox5.Helpers
             }
         }
 
-        public static string[] MusicFileExtensions = { ".mp3", ".wav", ".flac" };
+        public static string[] MusicFileExtensions = { ".mp3", ".wav", ".flac", "m4a", "aiff" };
     }
 }
