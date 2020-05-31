@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace PRACT.Rekordbox5.Helpers
 {
+    public enum PlaylistOptions { Orphans, Duplicates, Unanalyzed, Missing, Unreferenced, Untagged }
     public class PlaylistHelper
     {
         public const string FILENAME_ORPHANS = "Orphans.m3u8";
@@ -23,7 +25,7 @@ namespace PRACT.Rekordbox5.Helpers
         public const string PROCESS_TITLE_UNREFERENCED = "Processing unreferenced files...";
         public const string PROCESS_TITLE_UNTAGGED = "Processing untagged tracks...";
 
-        public enum PlaylistOptions { Orphans, Duplicates, Unanalyzed, Missing, Unreferenced, Untagged }
+        
         public string OutputFolder { get; set; }
         public string MusicFolder { get; set; }
         public DJ_PLAYLISTS Playlists { get; set; }
@@ -103,7 +105,16 @@ namespace PRACT.Rekordbox5.Helpers
             sw.Flush();
             sw.Close();
         }
+        public List<string> MusicFiles()
+        {
+            var Files = from t in Playlists.Collection.Tracks
+                        orderby t.CleanLocation
+                        select
+                            t.CleanLocation;
+            return Files.ToList();
+            
 
+        }
         public static List<string> MusicFiles(string Dir)
         {
             List<string> tmp = new List<string>();

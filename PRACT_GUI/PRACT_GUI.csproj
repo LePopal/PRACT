@@ -20,6 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PRACT.Common\PRACT.Common.csproj" />
     <ProjectReference Include="..\PRACT.Rekordbox5\PRACT.Rekordbox5.csproj" />
     <ProjectReference Include="..\PRACT.Rekordbox6\PRACT.Rekordbox6.csproj" />
   </ItemGroup>
