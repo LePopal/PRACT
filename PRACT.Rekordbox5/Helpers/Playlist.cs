@@ -105,15 +105,13 @@ namespace PRACT.Rekordbox5.Helpers
             sw.Flush();
             sw.Close();
         }
-        public List<string> MusicFiles()
+        public List<string> CollectionMusicFiles()
         {
             var Files = from t in Playlists.Collection.Tracks
                         orderby t.CleanLocation
                         select
                             t.CleanLocation;
             return Files.ToList();
-            
-
         }
         public static List<string> MusicFiles(string Dir)
         {

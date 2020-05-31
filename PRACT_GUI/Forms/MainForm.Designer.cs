@@ -74,6 +74,7 @@
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gtpCommand = new System.Windows.Forms.GroupBox();
+            this.radBackupMusic = new System.Windows.Forms.RadioButton();
             this.radStats = new System.Windows.Forms.RadioButton();
             this.radScripts = new System.Windows.Forms.RadioButton();
             this.radPlaylists = new System.Windows.Forms.RadioButton();
@@ -467,15 +468,27 @@
             // 
             // gtpCommand
             // 
+            this.gtpCommand.Controls.Add(this.radBackupMusic);
             this.gtpCommand.Controls.Add(this.radStats);
             this.gtpCommand.Controls.Add(this.radScripts);
             this.gtpCommand.Controls.Add(this.radPlaylists);
             this.gtpCommand.Location = new System.Drawing.Point(12, 48);
             this.gtpCommand.Name = "gtpCommand";
-            this.gtpCommand.Size = new System.Drawing.Size(300, 150);
+            this.gtpCommand.Size = new System.Drawing.Size(300, 188);
             this.gtpCommand.TabIndex = 9;
             this.gtpCommand.TabStop = false;
             this.gtpCommand.Text = "Commands";
+            // 
+            // radBackupMusic
+            // 
+            this.radBackupMusic.AutoSize = true;
+            this.radBackupMusic.Location = new System.Drawing.Point(16, 136);
+            this.radBackupMusic.Name = "radBackupMusic";
+            this.radBackupMusic.Size = new System.Drawing.Size(145, 29);
+            this.radBackupMusic.TabIndex = 1;
+            this.radBackupMusic.TabStop = true;
+            this.radBackupMusic.Text = "Backup Music";
+            this.radBackupMusic.UseVisualStyleBackColor = true;
             // 
             // radStats
             // 
@@ -626,6 +639,7 @@
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar progBar;
+        private System.Windows.Forms.RadioButton radBackupMusic;
     }
 }
 

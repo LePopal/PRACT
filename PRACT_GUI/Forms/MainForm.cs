@@ -1,5 +1,6 @@
 ﻿using PRACT.Classes.Helpers;
 using PRACT.Common;
+using PRACT.Common.IO;
 using PRACT.Forms;
 using PRACT.Rekordbox5.Data;
 using PRACT.Rekordbox5.Helpers;
@@ -43,13 +44,15 @@ namespace PRACT_GUI
 
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            progBar.Value = e.ProgressPercentage;
             if (e.UserState != null)
             {
                 tbl.Log(e.UserState.ToString());
-                progBar.Value = e.ProgressPercentage;
             }
             else
+            {
                 tbl.ClearLog();
+            }
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -130,6 +133,18 @@ namespace PRACT_GUI
                 {
                     worker.ReportProgress(0,"Calculating music library files size...");
                     worker.ReportProgress(100,string.Format(new FileSizeFormatProvider(), "Total size : {0:fs}", PlaylistHelper.Playlists.Size));
+                }
+                else if (radBackupMusic.Checked)
+                {
+                    worker.ReportProgress(0, $"Starting music files copy from { ProgramSettings.MusicFolder } to { ProgramSettings.OutputFolder }...");
+                    FileCopier fc = new FileCopier(ProgramSettings.MusicFolder, ProgramSettings.OutputFolder);
+                    int i = 1;
+                    int total = PlaylistHelper.TrackCount;
+                    foreach (var file in PlaylistHelper.CollectionMusicFiles())
+                    {
+                        fc.Copy(file);
+                        worker.ReportProgress((i++ * 100) / total);
+                    }
                 }
                 worker.ReportProgress(100,"Finished!");
                 tsCurrentProcess.Text = "Finished !";
