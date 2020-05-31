@@ -80,6 +80,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progBar = new System.Windows.Forms.ProgressBar();
             contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -350,7 +351,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsRekordboxXMLFile,
             this.tsCurrentProcess});
-            this.statusStrip.Location = new System.Drawing.Point(0, 312);
+            this.statusStrip.Location = new System.Drawing.Point(0, 383);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1308, 32);
             this.statusStrip.TabIndex = 1;
@@ -531,12 +532,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Process log";
             // 
+            // progBar
+            // 
+            this.progBar.Location = new System.Drawing.Point(13, 334);
+            this.progBar.Name = "progBar";
+            this.progBar.Size = new System.Drawing.Size(1277, 34);
+            this.progBar.TabIndex = 13;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnProcess;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 344);
+            this.ClientSize = new System.Drawing.Size(1308, 415);
+            this.Controls.Add(this.progBar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.gtpCommand);
@@ -616,6 +625,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsCurrentProcess;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ProgressBar progBar;
     }
 }
 

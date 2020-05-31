@@ -44,7 +44,10 @@ namespace PRACT_GUI
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             if (e.UserState != null)
+            {
                 tbl.Log(e.UserState.ToString());
+                progBar.Value = e.ProgressPercentage;
+            }
             else
                 tbl.ClearLog();
         }
@@ -53,7 +56,7 @@ namespace PRACT_GUI
         {
             BackgroundWorker worker = (BackgroundWorker)sender;
             PlaylistWorkQueue queue = new PlaylistWorkQueue();
-
+            int WorkOrder = 1;
 
             tbl.ClearLog();
             worker.ReportProgress(0,"Starting up...");
@@ -79,100 +82,56 @@ namespace PRACT_GUI
 
                 if (radPlaylists.Checked)
                 {
-                    if (!worker.CancellationPending)
-                    {
+                    // First we prepare the work queue
                         if (chkOrphans.Checked)
                         {
-                            tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_ORPHANS;
-                            worker.ReportProgress(0,PlaylistHelper.PROCESS_TITLE_ORPHANS);
-                            PlaylistHelper.WritePlaylist(PlaylistOptions.Orphans);
+                            queue.AddWork(PlaylistOptions.Orphans, PlaylistHelper.PROCESS_TITLE_ORPHANS, WorkOrder++);
                         }
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-
-                    if (!worker.CancellationPending)
-                    {
                         if (chkDuplicates.Checked)
                         {
-                            tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_DUPLICATES;
-                            worker.ReportProgress(0,PlaylistHelper.PROCESS_TITLE_DUPLICATES);
-                            PlaylistHelper.WritePlaylist(PlaylistOptions.Duplicates);
+                            queue.AddWork(PlaylistOptions.Duplicates, PlaylistHelper.PROCESS_TITLE_DUPLICATES, WorkOrder++);
                         }
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-                    if (!worker.CancellationPending)
-                    {
                         if (chkMissing.Checked)
                         {
-                            tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_MISSING;
-                            worker.ReportProgress(0,PlaylistHelper.PROCESS_TITLE_MISSING);
-                            PlaylistHelper.WritePlaylist(PlaylistOptions.Missing);
+                            queue.AddWork(PlaylistOptions.Missing, PlaylistHelper.PROCESS_TITLE_MISSING, WorkOrder++);
                         }
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-                    if (!worker.CancellationPending)
-                    {
                         if (chkUntagged.Checked)
                         {
-                            tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNTAGGED;
-                            worker.ReportProgress(0,PlaylistHelper.PROCESS_TITLE_UNTAGGED);
-                            PlaylistHelper.WritePlaylist(PlaylistOptions.Untagged);
+                            queue.AddWork(PlaylistOptions.Untagged, PlaylistHelper.PROCESS_TITLE_UNTAGGED, WorkOrder++);
                         }
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-                    if (!worker.CancellationPending)
-                    {
                         if (chkUnanalyzed.Checked)
                         {
-                            tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNANALYZED;
-                            worker.ReportProgress(0,PlaylistHelper.PROCESS_TITLE_UNANALYZED);
-                            PlaylistHelper.WritePlaylist(PlaylistOptions.Unanalyzed);
+                            queue.AddWork(PlaylistOptions.Unanalyzed, PlaylistHelper.PROCESS_TITLE_UNANALYZED, WorkOrder++);
                         }
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-                    if (!worker.CancellationPending)
-                    {
                         if (chkUnreferenced.Checked)
                         {
-                            tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNREFERENCED;
-                            worker.ReportProgress(0,PlaylistHelper.PROCESS_TITLE_UNREFERENCED);
-                            worker.ReportProgress(0,$"Checking files stored in { ProgramSettings.MusicFolder }, this may take a while...");
-                            PlaylistHelper.WritePlaylist(PlaylistOptions.Unreferenced);
+                            queue.AddWork(PlaylistOptions.None, PlaylistHelper.PROCESS_TITLE_UNREFERENCED, WorkOrder++);
+                            queue.AddWork(PlaylistOptions.Unreferenced, $"Checking files stored in { ProgramSettings.MusicFolder }, this may take a while...", WorkOrder);
+                        }
+
+                    foreach(PlaylistWork pw in queue.Queue)
+                    {
+                        if (!worker.CancellationPending)
+                        {
+                            tsCurrentProcess.Text = pw.Title;
+                            worker.ReportProgress((pw.Order * 100) / WorkOrder, pw.Title);
+                            pw.DoWork(PlaylistHelper);
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                            break;
                         }
                     }
-                    else
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
+
                 }
 
                 else if (radStats.Checked)
                 {
                     worker.ReportProgress(0,"Calculating music library files size...");
-                    worker.ReportProgress(0,string.Format(new FileSizeFormatProvider(), "Total size : {0:fs}", PlaylistHelper.Playlists.Size));
+                    worker.ReportProgress(100,string.Format(new FileSizeFormatProvider(), "Total size : {0:fs}", PlaylistHelper.Playlists.Size));
                 }
-                worker.ReportProgress(0,"Finished!");
+                worker.ReportProgress(100,"Finished!");
                 tsCurrentProcess.Text = "Finished !";
             }
             else
@@ -251,89 +210,7 @@ namespace PRACT_GUI
             //});
 
         }
-        private void Process()
-        {
-            
-            tbl.ClearLog();
-            tbl.Log("Starting up...");
-            tsCurrentProcess.Text = "Starting up...";
-
-            if (Directory.Exists(ProgramSettings.OutputFolder)
-                && File.Exists(ProgramSettings.RekordboxXMLFile))
-            {
-
-                tbl.Log($"Processing { ProgramSettings.RekordboxXMLFile }");
-                
-                // On first run, the Playlist Helper is empty 
-                if (PlaylistHelper == null)
-                    PlaylistHelper = new PlaylistHelper(ProgramSettings.OutputFolder
-                        , ProgramSettings.MusicFolder
-                        , new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile));
-                // On the next runs, the XML file may have changed
-                else if (PlaylistHelper.Playlists.RekordboxXMLFullPath != ProgramSettings.RekordboxXMLFile)
-                    PlaylistHelper.Playlists = new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile);
-
-                tbl.Log($"{ PlaylistHelper.TrackCount } track(s) loaded!");
-                tbl.Log($"{ PlaylistHelper.PlaylistCount } Playlists loaded!");
-
-                if (radPlaylists.Checked)
-                {
-                    if (chkOrphans.Checked)
-                    {
-                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_ORPHANS;
-                        tbl.Log(PlaylistHelper.PROCESS_TITLE_ORPHANS);
-                        PlaylistHelper.WritePlaylist(PlaylistOptions.Orphans);
-                    }
-
-                    if (chkDuplicates.Checked)
-                    {
-                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_DUPLICATES;
-                        tbl.Log(PlaylistHelper.PROCESS_TITLE_DUPLICATES);
-                        PlaylistHelper.WritePlaylist(PlaylistOptions.Duplicates);
-                    }
-                    if (chkMissing.Checked)
-                    {
-                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_MISSING;
-                        tbl.Log(PlaylistHelper.PROCESS_TITLE_MISSING);
-                        PlaylistHelper.WritePlaylist(PlaylistOptions.Missing);
-                    }
-                    if (chkUntagged.Checked)
-                    {
-                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNTAGGED;
-                        tbl.Log(PlaylistHelper.PROCESS_TITLE_UNTAGGED);
-                        PlaylistHelper.WritePlaylist(PlaylistOptions.Untagged);
-                    }
-                    if (chkUnanalyzed.Checked)
-                    {
-                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNANALYZED;
-                        tbl.Log(PlaylistHelper.PROCESS_TITLE_UNANALYZED);
-                        PlaylistHelper.WritePlaylist(PlaylistOptions.Unanalyzed);
-                    }
-
-                    if (chkUnreferenced.Checked)
-                    {
-                        tsCurrentProcess.Text = PlaylistHelper.PROCESS_TITLE_UNREFERENCED;
-                        tbl.Log(PlaylistHelper.PROCESS_TITLE_UNREFERENCED);
-                        tbl.Log($"Checking files stored in { ProgramSettings.MusicFolder }, this may take a while...");
-                        PlaylistHelper.WritePlaylist(PlaylistOptions.Unreferenced);
-                    }
-                }
-                else if (radStats.Checked)
-                {
-                    tbl.Log("Calculating music library files size...");
-                    tbl.Log(string.Format(new FileSizeFormatProvider(), "Total size : {0:fs}", PlaylistHelper.Playlists.Size));
-                }
-                tbl.Log("Finished!");
-                tsCurrentProcess.Text = "Finished !";
-            }
-            else
-            {
-                string msg = $"Impossible to start processing: { ProgramSettings.RekordboxXMLFile } could not be found.";
-                tbl.Log(msg);
-                Messages.ErrorMessage(msg);
-            }
-            StopProcess();
-        }
+        
         private void RefreshStatusBar()
         {
             tsRekordboxXMLFile.Text = ProgramSettings.RekordboxXMLFile;
@@ -341,31 +218,32 @@ namespace PRACT_GUI
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (exportThread != null && exportThread.IsAlive)
-            {
-                StopProcess();
-                e.Cancel = true;
-                var timer = new System.Timers.Timer();
-                timer.AutoReset = false;
-                timer.SynchronizingObject = this;
-                timer.Interval = 1000;
-                timer.Elapsed +=
-                  (sender, args) =>
-                  {
-                      // Do a fast check to see if the worker thread is still running.
-                      if (exportThread.Join(0))
-                      {
-                          // Reissue the form closing event.
-                          Close();
-                      }
-                      else
-                      {
-                          // Keep restarting the timer until the worker thread ends.
-                          timer.Start();
-                      }
-                  };
-                timer.Start();
-            }
+            //if (exportThread != null && exportThread.IsAlive)
+            //{
+            //    StopProcess();
+            //    e.Cancel = true;
+            //    var timer = new System.Timers.Timer();
+            //    timer.AutoReset = false;
+            //    timer.SynchronizingObject = this;
+            //    timer.Interval = 1000;
+            //    timer.Elapsed +=
+            //      (sender, args) =>
+            //      {
+            //          // Do a fast check to see if the worker thread is still running.
+            //          if (exportThread.Join(0))
+            //          {
+            //              // Reissue the form closing event.
+            //              Close();
+            //          }
+            //          else
+            //          {
+            //              // Keep restarting the timer until the worker thread ends.
+            //              timer.Start();
+            //          }
+            //      };
+            //    timer.Start();
+            //}
+            StopProcess();
         }
     }
 }

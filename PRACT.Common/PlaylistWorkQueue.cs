@@ -7,7 +7,7 @@ namespace PRACT.Common
 {
     public class PlaylistWorkQueue
     {
-        private List<PlaylistWork> Queue = null;
+        public List<PlaylistWork> Queue = null;
         public PlaylistWorkQueue()
         {
             Queue = new List<PlaylistWork>();

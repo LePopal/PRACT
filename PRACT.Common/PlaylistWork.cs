@@ -19,7 +19,8 @@ namespace PRACT.Common
 
         public void DoWork(PlaylistHelper Helper)
         {
-            Helper.WritePlaylist(Option);
+            if(Option != PlaylistOptions.None)
+                Helper.WritePlaylist(Option);
         }
     }
 }

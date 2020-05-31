@@ -8,7 +8,7 @@ using System.Text;
 
 namespace PRACT.Rekordbox5.Helpers
 {
-    public enum PlaylistOptions { Orphans, Duplicates, Unanalyzed, Missing, Unreferenced, Untagged }
+    public enum PlaylistOptions { Orphans, Duplicates, Unanalyzed, Missing, Unreferenced, Untagged, None }
     public class PlaylistHelper
     {
         public const string FILENAME_ORPHANS = "Orphans.m3u8";
