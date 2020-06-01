@@ -18,6 +18,11 @@ namespace PRACT.Classes.Helpers
             return MessageBox.Show(Message, Prefix, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
+        public static DialogResult YesNoCancelMessage(string Message)
+        {
+            return MessageBox.Show(Message, Prefix, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        }
+
         public static DialogResult WarningMessage(string Message)
         {
             return MessageBox.Show(Message, string.Format("{0} - Warning!", Prefix), MessageBoxButtons.OK, MessageBoxIcon.Warning);

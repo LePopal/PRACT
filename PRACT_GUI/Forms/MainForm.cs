@@ -148,6 +148,21 @@ namespace PRACT_GUI
                 }
                 else if (radBackupMusic.Checked)
                 {
+                    DialogResult dialogResult =
+                        Messages.YesNoCancelMessage(string.Format(new FileSizeFormatProvider(), "You're about to copy {0:fs}. This could take a long time. Would you like to overwrite the existing files ?", PlaylistHelper.Playlists.Size));
+                    bool overwrite = false;
+                    switch(dialogResult)
+                    {
+                        case DialogResult.Yes:
+                            overwrite = true;
+                            break;
+                        case DialogResult.No:
+                            overwrite = false;
+                            break;
+                        case DialogResult.Cancel:
+                            e.Cancel = true;
+                            return;
+                    }
                     worker.ReportProgress(0, $"Starting music files copy from { ProgramSettings.MusicFolder } to { ProgramSettings.OutputFolder }...");
                     FileCopier fc = new FileCopier(ProgramSettings.MusicFolder, ProgramSettings.OutputFolder);
                     
@@ -159,7 +174,7 @@ namespace PRACT_GUI
                     {
                         if (!worker.CancellationPending)
                         {
-                            if (fc.Copy(file))
+                            if (fc.Copy(file, overwrite))
                             {
                                 worker.ReportProgress((count++ * 100) / total);
                             }
