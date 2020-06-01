@@ -352,7 +352,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsRekordboxXMLFile,
             this.tsCurrentProcess});
-            this.statusStrip.Location = new System.Drawing.Point(0, 383);
+            this.statusStrip.Location = new System.Drawing.Point(0, 376);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1308, 32);
             this.statusStrip.TabIndex = 1;
@@ -557,7 +557,7 @@
             this.AcceptButton = this.btnProcess;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 415);
+            this.ClientSize = new System.Drawing.Size(1308, 408);
             this.Controls.Add(this.progBar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnProcess);

@@ -17,6 +17,7 @@
     <PackageIcon>Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/LePopal/PRACT</RepositoryUrl>
     <Description>PRACT is an Open Source program (Apache 2.0) designed to help you to clean up and manage your Rekordbox Library. It can help you find duplicate tracks, tracks not listed in any playlists and more.</Description>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

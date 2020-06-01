@@ -14,10 +14,17 @@ namespace PRACT.Classes.Helpers
         }
         public void Log(string Message)
         {
-            Textbox.Invoke((Action)delegate
+            try
             {
-                Textbox.AppendText($"{ DateTime.Now } - { Message }\r\n");
-            });
+                Textbox.Invoke((Action)delegate
+                {
+                    Textbox.AppendText($"{ DateTime.Now } - { Message }\r\n");
+                });
+            }
+            catch(System.InvalidOperationException ie)
+            {
+                // Nothing to do, happens when the main window is closed
+            }
         }
 
         public void ClearLog()

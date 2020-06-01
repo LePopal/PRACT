@@ -1,6 +1,7 @@
 ﻿using PRACT.Classes.Helpers;
 using PRACT.Common;
 using PRACT.Common.IO;
+using PRACT.Common.UI;
 using PRACT.Forms;
 using PRACT.Rekordbox5.Data;
 using PRACT.Rekordbox5.Helpers;
@@ -16,10 +17,11 @@ namespace PRACT_GUI
 {
     public partial class MainForm : Form
     {
-        private Thread exportThread;
         private TextBoxLogger tbl;
         protected PlaylistHelper PlaylistHelper;
         private BackgroundWorker backgroundWorker = new BackgroundWorker();
+        private bool closePending;
+
         public MainForm()
         {
             InitializeComponent();
@@ -45,13 +47,23 @@ namespace PRACT_GUI
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progBar.Value = e.ProgressPercentage;
+
             if (e.UserState != null)
             {
-                tbl.Log(e.UserState.ToString());
+                if (e.UserState is ProgressUpdate)
+                {
+                    ProgressUpdate pu = (ProgressUpdate)e.UserState;
+                    tbl.Log(pu.LongProgress);
+                    
+                }
+                else
+                {
+                    tbl.Log(e.UserState.ToString());
+                }
             }
             else
             {
-                tbl.ClearLog();
+                //tbl.ClearLog();
             }
         }
 
@@ -123,7 +135,7 @@ namespace PRACT_GUI
                         else
                         {
                             e.Cancel = true;
-                            break;
+                            return;
                         }
                     }
 
@@ -138,13 +150,26 @@ namespace PRACT_GUI
                 {
                     worker.ReportProgress(0, $"Starting music files copy from { ProgramSettings.MusicFolder } to { ProgramSettings.OutputFolder }...");
                     FileCopier fc = new FileCopier(ProgramSettings.MusicFolder, ProgramSettings.OutputFolder);
-                    int i = 1;
+                    
+                    int count = 1;
                     int total = PlaylistHelper.TrackCount;
-                    foreach (var file in PlaylistHelper.CollectionMusicFiles())
+                    int errorsCount = 0;
+
+                    foreach (string file in PlaylistHelper.CollectionMusicFiles())
                     {
-                        fc.Copy(file);
-                        worker.ReportProgress((i++ * 100) / total);
+                        if (fc.Copy(file))
+                        {
+                            worker.ReportProgress((count++ * 100) / total);
+                        }
+                        else
+                        {
+                            worker.ReportProgress((count++ * 100) / total, $"Error: impossible to copy { file }. File not found. ");
+                            errorsCount++;
+                        }
+                        tsCurrentProcess.Text = $"{ count } / { total } music files processed";
                     }
+                    if (errorsCount > 0)
+                        worker.ReportProgress(100, $"Error: { errorsCount } file(s) could not be copied.");
                 }
                 worker.ReportProgress(100,"Finished!");
                 tsCurrentProcess.Text = "Finished !";
@@ -159,18 +184,25 @@ namespace PRACT_GUI
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(e.Cancelled)
+            if (closePending)
+                this.Close();
+            closePending = false;
+
+            if (e.Cancelled)
             {
                 tbl.Log("Cancelled!");
+                progBar.Value = 0;
             }
             else if (e.Error != null)
             {
                 tbl.Log("Error!");
-                    }
+            }
             else
             {
                 tbl.Log("Done!");
             }
+            tsCurrentProcess.Text = "Idle";
+            StopProcess();
         }
 
 
@@ -191,8 +223,12 @@ namespace PRACT_GUI
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            
-
+            if (backgroundWorker.IsBusy)
+            {
+                tsCurrentProcess.Text = "Cancelling...";
+                backgroundWorker.CancelAsync();
+            }
+            else
                 StartProcess();
         }
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,18 +247,17 @@ namespace PRACT_GUI
                 //{
                 //    Application.DoEvents();
                 //}
+                btnProcess.Text = "Cancel";
                 backgroundWorker.RunWorkerAsync();
             }
         }
 
         private void StopProcess()
         {
+            btnProcess.Text = "Process";
             if (backgroundWorker.WorkerSupportsCancellation)
                 backgroundWorker.CancelAsync();
-            //btnProcess.Invoke((Action)delegate
-            //{
-            //    btnProcess.Enabled = true;
-            //});
+            
 
         }
         
@@ -259,6 +294,22 @@ namespace PRACT_GUI
             //    timer.Start();
             //}
             StopProcess();
+            // Wait for the job to finish
+            //while (backgroundWorker.IsBusy) ;
+
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (backgroundWorker.IsBusy)
+            {
+                closePending = true;
+                tsCurrentProcess.Text = "Closing program...";
+                backgroundWorker.CancelAsync();
+                e.Cancel = true;
+                this.Enabled = false;   // or this.Hide()
+                return;
+            }
+            base.OnFormClosing(e);
         }
     }
 }

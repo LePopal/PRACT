@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -40,8 +41,7 @@ namespace PRACT.Common.IO
 
         public string GetRelativePath(string FileName)
         {
-            FileInfo fi = new FileInfo(FileName);
-            return Path.GetRelativePath(SourceFolder, fi.DirectoryName);
+            return Path.GetRelativePath(Path.GetPathRoot(FileName), Path.GetDirectoryName(FileName));
         }
         /// <summary>
         /// Copy the file
@@ -58,11 +58,12 @@ namespace PRACT.Common.IO
                     // New Full Destination Directory
                     string dir = Path.Combine(DestinationFolder, GetRelativePath(FileName));
                     // Create the destination directory if necessary
-                    //Directory.CreateDirectory(dir);
-                    //File.Copy(FileName, dir);
+                    Directory.CreateDirectory(dir);
+                    File.Copy(FileName, Path.Combine(dir,Path.GetFileName(FileName)));
                 }
-                catch
+                catch(Exception e)
                 {
+                    Trace.WriteLine(e.Message);
                     result=false;
                 }
             }
