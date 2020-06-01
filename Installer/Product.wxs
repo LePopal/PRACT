@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define PRACT_GUI_TargetDir=$(var.PRACT_GUI.TargetDir)?>
+	<Product Id="dd9c5380-7eb4-4e43-83a5-10d39ceeb50c" Name="PRACT" Language="1033" Version="0.6.0.0" Manufacturer="Popal" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="PRACT, Popal's Rekordbox Analysis and Clean up Tool"/>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+
+    <Icon Id="MyShortcutIcon" SourceFile="$(var.ProjectDir)app.ico"/>
+
+    <Property Id="ARPPRODUCTICON" Value="MyShortcutIcon" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)ApacheLicense2.0.rtf"/>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"></Property>
+    <UIRef Id="WixUI_InstallDir"/>
+    <UIRef Id="WixUI_ErrorProgressText"/>
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank your for installing PRACT."></Property>
+    
+		<Feature Id="ProductFeature" Title="PRACT Installer" Level="1">
+			<ComponentGroupRef Id="ProgramFilesFolder_files" />
+      <ComponentGroupRef Id="ProgramFilesFolder_WinX64Native" />
+      <ComponentGroupRef Id="ProgramFilesFolder_WinX86Native" />
+      <ComponentRef Id="ApplicationShortcut"/>
+      <ComponentRef Id="ApplicationDesktopShortcut"/>
+		</Feature>
+	</Product>
+
+	<Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ManufacturerFolder" Name="!(bind.property.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)">
+            <Directory Id="Runtimes" Name="runtimes">
+              <Directory Id="RuntimesX64" Name="win-x64">
+                <Directory Id="RuntimeX64Native" Name="native">
+                  <Component Id="CreateRuntimesX64Folder" Guid="3ec86390-9804-4269-8ce1-31486ed96c1d">
+                    <CreateFolder />
+                  </Component>
+                </Directory>
+              </Directory>
+              <Directory Id="RuntimesX86" Name="win-x86">
+                <Directory Id="RuntimeX86Native" Name="native">
+                  <Component Id="CreateRuntimesX86Folder" Guid="79a229da-773f-4978-aaee-18f8c7cddbbc">
+                    <CreateFolder />
+                  </Component>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MfgStartMenuFolder" Name="!(bind.property.Manufacturer)" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id="CreateRuntimesX64Folder" Title="native" Level="1">
+      <ComponentRef Id="CreateRuntimesX64Folder"/>
+    </Feature>
+    <Feature Id="CreateRuntimesX86Folder" Title="native" Level="1">
+      <ComponentRef Id="CreateRuntimesX86Folder"/>
+    </Feature>
+	</Fragment>
+
+  <!-- Start Menu shortcut -->
+  <Fragment>
+    <DirectoryRef Id="MfgStartMenuFolder">
+      <Component Id="ApplicationShortcut" Guid="fe8aa1f2-d10d-43ab-bfd4-daa42f19b2d7">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="!(bind.property.ProductName)"
+                  Description="Clean up your Rekordbox collection with PRACT!"
+                  Directory="MfgStartMenuFolder"
+                  Target="[INSTALLFOLDER]PRACT.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="MyShortcutIcon" />
+        <RemoveFolder Id="RemoveMfgStartMenuFolder"
+                      Directory="MfgStartMenuFolder"
+                      On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software\Popal\PRACT\ProgramMenuShortcut"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationDesktopShortcut" Guid="3c429430-c353-4ebd-a309-61f74bb178a8">
+        <Shortcut Id="MyDesktopShortcut"
+                  Name="!(name.property.ProductName)"
+                  Description="Clean up your Rekordbox collection with PRACT!"
+                  Directory="DesktopFolder"
+                  Target="[INSTALLFOLDER]PRACT.exe"
+                  Icon="MyShortcutIcon"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software\Popal\PRACT\DesktopShortcut"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  
+ 
+
+	<Fragment>
+	  <ComponentGroup Id="ProgramFilesFolder_files" Directory="INSTALLFOLDER">
+      <Component Id="PRACT.exe" Guid="96d02bec-cf1f-45d5-9c85-92db60356d90">
+        <File Id="PRACT.exe" Name="PRACT.exe" Source="$(var.PRACT_GUI_TargetDir)PRACT.exe" KeyPath="yes" />
+      </Component>
+	    <Component Id="PRACT.runtimeconfig.json" Guid="e8ae9eca-9a8d-418b-8dd4-475432295cad">
+	      <File Id="PRACT.runtimeconfig.json" Name="PRACT.runtimeconfig.json" Source="$(var.PRACT_GUI_TargetDir)PRACT.runtimeconfig.json" />
+	    </Component>
+	    <Component Id="PRACT.dll" Guid="f08cfa5a-e0c8-4f99-a677-1e5dd3db3da3">
+	      <File Id="PRACT.dll" Name="PRACT.dll" Source="$(var.PRACT_GUI_TargetDir)PRACT.dll" />
+	    </Component>
+	    <Component Id="PRACT.Rekordbox5.dll" Guid="65ff2e93-b49f-4514-b7ab-9f19562bb8f5">
+	      <File Id="PRACT.Rekordbox5.dll" Name="PRACT.Rekordbox5.dll" Source="$(var.PRACT_GUI_TargetDir)PRACT.Rekordbox5.dll" />
+	    </Component>
+	    <Component Id="PRACT.Rekordbox6.dll" Guid="ec961316-f52a-4ed4-a0ee-464b120a7b62">
+	      <File Id="PRACT.Rekordbox6.dll" Name="PRACT.Rekordbox6.dll" Source="$(var.PRACT_GUI_TargetDir)PRACT.Rekordbox6.dll" />
+	    </Component>
+      <Component Id="PRACT.Common.dll" Guid="f480a363-cb4a-4609-9340-601405b2f894">
+        <File Id="PRACT.Common.dll" Name="PRACT.Common.dll" Source="$(var.PRACT_GUI_TargetDir)PRACT.Common.dll" />
+      </Component>
+	    <Component Id="Microsoft.EntityFrameworkCore.dll" Guid="f40214dd-bdf6-4972-b73b-176d7174331f">
+	      <File Id="Microsoft.EntityFrameworkCore.dll" Name="Microsoft.EntityFrameworkCore.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.EntityFrameworkCore.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="13410a06-d353-4485-b9de-3fbf636e50e1">
+	      <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Bcl.AsyncInterfaces.dll" Guid="51d1f686-6246-4c56-af2d-34b3d3e3a483">
+	      <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Name="Microsoft.Bcl.AsyncInterfaces.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Logging.Abstractions.dll" Guid="0a6c09f4-1fb0-4a4e-88f3-bfb0879ec054">
+	      <File Id="Microsoft.Extensions.Logging.Abstractions.dll" Name="Microsoft.Extensions.Logging.Abstractions.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Logging.Abstractions.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Caching.Abstractions.dll" Guid="eec2a36a-fdb1-4b30-ba6c-1e81cdde2705">
+	      <File Id="Microsoft.Extensions.Caching.Abstractions.dll" Name="Microsoft.Extensions.Caching.Abstractions.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Caching.Abstractions.dll" />
+	    </Component>
+	    <Component Id="Microsoft.EntityFrameworkCore.Abstractions.dll" Guid="757f4883-3c13-4ae9-8f66-34121b5ee056">
+	      <File Id="Microsoft.EntityFrameworkCore.Abstractions.dll" Name="Microsoft.EntityFrameworkCore.Abstractions.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.EntityFrameworkCore.Abstractions.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Primitives.dll" Guid="e2dce092-56d0-4e28-9df0-564ee4b1a215">
+	      <File Id="Microsoft.Extensions.Primitives.dll" Name="Microsoft.Extensions.Primitives.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Primitives.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Bcl.HashCode.dll" Guid="bd097c4c-caad-4b00-90e4-3618506f2392">
+	      <File Id="Microsoft.Bcl.HashCode.dll" Name="Microsoft.Bcl.HashCode.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Bcl.HashCode.dll" />
+	    </Component>
+	    <Component Id="System.Collections.Immutable.dll" Guid="fa7919b6-6c08-4c58-8dce-7c3da91a7899">
+	      <File Id="System.Collections.Immutable.dll" Name="System.Collections.Immutable.dll" Source="$(var.PRACT_GUI_TargetDir)System.Collections.Immutable.dll" />
+	    </Component>
+	    <Component Id="System.Diagnostics.DiagnosticSource.dll" Guid="517d66c3-3477-42fd-9087-874c1f1934e3">
+	      <File Id="System.Diagnostics.DiagnosticSource.dll" Name="System.Diagnostics.DiagnosticSource.dll" Source="$(var.PRACT_GUI_TargetDir)System.Diagnostics.DiagnosticSource.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.DependencyInjection.dll" Guid="b1891bdd-74ae-48ce-9945-350db86bc339">
+	      <File Id="Microsoft.Extensions.DependencyInjection.dll" Name="Microsoft.Extensions.DependencyInjection.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.DependencyInjection.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Logging.dll" Guid="88e2351b-5958-4806-bb2a-8a4303d10775">
+	      <File Id="Microsoft.Extensions.Logging.dll" Name="Microsoft.Extensions.Logging.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Logging.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Options.dll" Guid="315f8298-03e3-4dcc-9d0e-d5a7ab4ec638">
+	      <File Id="Microsoft.Extensions.Options.dll" Name="Microsoft.Extensions.Options.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Options.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Caching.Memory.dll" Guid="1fd49e95-722d-4b74-9d0e-4ac2f250c7a8">
+	      <File Id="Microsoft.Extensions.Caching.Memory.dll" Name="Microsoft.Extensions.Caching.Memory.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Caching.Memory.dll" />
+	    </Component>
+	    <Component Id="System.Text.Json.dll" Guid="c966f5cd-ebaf-4b65-a838-0d607c603de6">
+	      <File Id="System.Text.Json.dll" Name="System.Text.Json.dll" Source="$(var.PRACT_GUI_TargetDir)System.Text.Json.dll" />
+	    </Component>
+	    <Component Id="Microsoft.EntityFrameworkCore.Relational.dll" Guid="cb49ef6d-3595-4e9f-927a-da521750313f">
+	      <File Id="Microsoft.EntityFrameworkCore.Relational.dll" Name="Microsoft.EntityFrameworkCore.Relational.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.EntityFrameworkCore.Relational.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.Configuration.Abstractions.dll" Guid="0e70fe5b-4792-4cea-80d3-3e27b187fa9a">
+	      <File Id="Microsoft.Extensions.Configuration.Abstractions.dll" Name="Microsoft.Extensions.Configuration.Abstractions.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.Configuration.Abstractions.dll" />
+	    </Component>
+	    <Component Id="Microsoft.DotNet.PlatformAbstractions.dll" Guid="bce1f212-be03-408b-8a80-18edec2f34af">
+	      <File Id="Microsoft.DotNet.PlatformAbstractions.dll" Name="Microsoft.DotNet.PlatformAbstractions.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.DotNet.PlatformAbstractions.dll" />
+	    </Component>
+	    <Component Id="Microsoft.EntityFrameworkCore.Sqlite.dll" Guid="b93a9a93-8ef8-4dc5-bde1-de864ca94598">
+	      <File Id="Microsoft.EntityFrameworkCore.Sqlite.dll" Name="Microsoft.EntityFrameworkCore.Sqlite.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.EntityFrameworkCore.Sqlite.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Data.Sqlite.dll" Guid="526a97fd-2abe-40b1-b3c3-b01d6c5cf262">
+	      <File Id="Microsoft.Data.Sqlite.dll" Name="Microsoft.Data.Sqlite.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Data.Sqlite.dll" />
+	    </Component>
+	    <Component Id="SQLitePCLRaw.core.dll" Guid="7c925c4b-313f-4ec1-9526-478a41375ee2">
+	      <File Id="SQLitePCLRaw.core.dll" Name="SQLitePCLRaw.core.dll" Source="$(var.PRACT_GUI_TargetDir)SQLitePCLRaw.core.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Extensions.DependencyModel.dll" Guid="f578f796-38b1-4b6a-a139-6deeec4a4c86">
+	      <File Id="Microsoft.Extensions.DependencyModel.dll" Name="Microsoft.Extensions.DependencyModel.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.DependencyModel.dll" />
+	    </Component>
+	  </ComponentGroup>
+
+    <ComponentGroup Id="ProgramFilesFolder_WinX64Native" Directory="RuntimeX64Native" >
+      <Component Id="e_sqlcipher64.dll" Guid="dc23c796-a149-4e25-9df7-19b8034b14fb">
+        <CreateFolder Directory ="RuntimeX64Native"></CreateFolder>
+        <File Id="e_sqlcipher64.dll" Name="e_sqlcipher.dll" Source="$(var.PRACT_GUI_TargetDir)runtimes\win-x64\native\e_sqlcipher.dll" />
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="ProgramFilesFolder_WinX86Native" Directory="RuntimeX86Native" >
+      <Component Id="e_sqlcipher86.dll" Guid="2e4434c9-71cf-410f-9517-6f6ed6f4d47d">
+        <CreateFolder Directory ="RuntimeX64Native"></CreateFolder>
+        <File Id="e_sqlcipher86.dll" Name="e_sqlcipher.dll" Source="$(var.PRACT_GUI_TargetDir)runtimes\win-x86\native\e_sqlcipher.dll" />
+      </Component>
+    </ComponentGroup>
+	</Fragment>
+</Wix>

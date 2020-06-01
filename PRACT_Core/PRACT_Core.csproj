@@ -24,4 +24,8 @@
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PRACT.Rekordbox5\PRACT.Rekordbox5.csproj" />
+  </ItemGroup>
+
 </Project>
