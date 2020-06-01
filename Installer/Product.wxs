@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define PRACT_GUI_TargetDir=$(var.PRACT_GUI.TargetDir)?>
-	<Product Id="dd9c5380-7eb4-4e43-83a5-10d39ceeb50c" Name="PRACT" Language="1033" Version="0.5.1.0" Manufacturer="Popal" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
+	<Product Id="dd9c5380-7eb4-4e43-83a5-10d39ceeb50c" Name="PRACT" Language="1033" Version="0.6.0.0" Manufacturer="Popal" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="PRACT, Popal's Rekordbox Analysis and Clean up Tool"/>
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -128,6 +128,9 @@
 	    <Component Id="PRACT.Rekordbox6.dll" Guid="ec961316-f52a-4ed4-a0ee-464b120a7b62">
 	      <File Id="PRACT.Rekordbox6.dll" Name="PRACT.Rekordbox6.dll" Source="$(var.PRACT_GUI_TargetDir)PRACT.Rekordbox6.dll" />
 	    </Component>
+      <Component Id="PRACT.Common.dll" Guid="f480a363-cb4a-4609-9340-601405b2f894">
+        <File Id="PRACT.Common.dll" Name="PRACT.Common.dll" Source="$(var.PRACT_GUI_TargetDir)PRACT.Common.dll" />
+      </Component>
 	    <Component Id="Microsoft.EntityFrameworkCore.dll" Guid="f40214dd-bdf6-4972-b73b-176d7174331f">
 	      <File Id="Microsoft.EntityFrameworkCore.dll" Name="Microsoft.EntityFrameworkCore.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.EntityFrameworkCore.dll" />
 	    </Component>
