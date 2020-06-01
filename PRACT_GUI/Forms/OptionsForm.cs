@@ -1,4 +1,5 @@
 ﻿using PRACT.Classes.Helpers;
+using PRACT.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +35,6 @@ namespace PRACT_OBS
             this.ttipOptions.InitialDelay = 1000;
             this.ttipOptions.ReshowDelay = 500;
             this.ttipOptions.ShowAlways = true;
-
         }
 
         private void btnOK_Click(object sender, EventArgs e)

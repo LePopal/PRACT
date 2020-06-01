@@ -47,8 +47,9 @@ namespace PRACT.Common.IO
         /// Copy the file
         /// </summary>
         /// <param name="FileName"></param>
+        /// <param name="Overwrite"></param>
         /// <returns>True if the copy was successfull</returns>
-        public bool Copy(string FileName)
+        public bool Copy(string FileName, bool Overwrite)
         {
             bool result = File.Exists(FileName);
             if (result)
@@ -59,7 +60,7 @@ namespace PRACT.Common.IO
                     string dir = Path.Combine(DestinationFolder, GetRelativePath(FileName));
                     // Create the destination directory if necessary
                     Directory.CreateDirectory(dir);
-                    File.Copy(FileName, Path.Combine(dir,Path.GetFileName(FileName)));
+                    File.Copy(FileName, Path.Combine(dir,Path.GetFileName(FileName)),Overwrite);
                 }
                 catch(Exception e)
                 {
@@ -69,5 +70,11 @@ namespace PRACT.Common.IO
             }
             return result;
         }
+
+        public bool Copy(string FileName)
+        {
+            return Copy(FileName, false);
+        }
+        
     }
 }

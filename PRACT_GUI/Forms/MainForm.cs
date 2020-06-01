@@ -157,16 +157,24 @@ namespace PRACT_GUI
 
                     foreach (string file in PlaylistHelper.CollectionMusicFiles())
                     {
-                        if (fc.Copy(file))
+                        if (!worker.CancellationPending)
                         {
-                            worker.ReportProgress((count++ * 100) / total);
+                            if (fc.Copy(file))
+                            {
+                                worker.ReportProgress((count++ * 100) / total);
+                            }
+                            else
+                            {
+                                worker.ReportProgress((count++ * 100) / total, $"Error: impossible to copy { file }. File not found. ");
+                                errorsCount++;
+                            }
+                            tsCurrentProcess.Text = $"{ count } / { total } music files processed";
                         }
                         else
                         {
-                            worker.ReportProgress((count++ * 100) / total, $"Error: impossible to copy { file }. File not found. ");
-                            errorsCount++;
+                            e.Cancel = true;
+                            return;
                         }
-                        tsCurrentProcess.Text = $"{ count } / { total } music files processed";
                     }
                     if (errorsCount > 0)
                         worker.ReportProgress(100, $"Error: { errorsCount } file(s) could not be copied.");
@@ -240,13 +248,6 @@ namespace PRACT_GUI
         {
             if (!backgroundWorker.IsBusy)
             {
-                //btnProcess.Enabled = false;
-                //exportThread = new Thread(new ThreadStart(Process));
-                //exportThread.Start();
-                //while (exportThread.IsAlive)
-                //{
-                //    Application.DoEvents();
-                //}
                 btnProcess.Text = "Cancel";
                 backgroundWorker.RunWorkerAsync();
             }
@@ -257,8 +258,6 @@ namespace PRACT_GUI
             btnProcess.Text = "Process";
             if (backgroundWorker.WorkerSupportsCancellation)
                 backgroundWorker.CancelAsync();
-            
-
         }
         
         private void RefreshStatusBar()
@@ -268,35 +267,7 @@ namespace PRACT_GUI
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (exportThread != null && exportThread.IsAlive)
-            //{
-            //    StopProcess();
-            //    e.Cancel = true;
-            //    var timer = new System.Timers.Timer();
-            //    timer.AutoReset = false;
-            //    timer.SynchronizingObject = this;
-            //    timer.Interval = 1000;
-            //    timer.Elapsed +=
-            //      (sender, args) =>
-            //      {
-            //          // Do a fast check to see if the worker thread is still running.
-            //          if (exportThread.Join(0))
-            //          {
-            //              // Reissue the form closing event.
-            //              Close();
-            //          }
-            //          else
-            //          {
-            //              // Keep restarting the timer until the worker thread ends.
-            //              timer.Start();
-            //          }
-            //      };
-            //    timer.Start();
-            //}
             StopProcess();
-            // Wait for the job to finish
-            //while (backgroundWorker.IsBusy) ;
-
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -310,6 +281,21 @@ namespace PRACT_GUI
                 return;
             }
             base.OnFormClosing(e);
+        }
+
+        private void radBackupMusic_Click(object sender, EventArgs e)
+        {
+            groupOptions.Enabled = false;
+        }
+
+        private void radStats_Click(object sender, EventArgs e)
+        {
+            groupOptions.Enabled = false;
+        }
+
+        private void radPlaylists_Click(object sender, EventArgs e)
+        {
+            groupOptions.Enabled = true;
         }
     }
 }

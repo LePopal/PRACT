@@ -71,10 +71,10 @@
             this.chkUnanalyzed = new System.Windows.Forms.CheckBox();
             this.chkUnreferenced = new System.Windows.Forms.CheckBox();
             this.btnProcess = new System.Windows.Forms.Button();
-            this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.gtpCommand = new System.Windows.Forms.GroupBox();
             this.radBackupMusic = new System.Windows.Forms.RadioButton();
+            this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
+            this.groupOptions = new System.Windows.Forms.GroupBox();
+            this.gtpCommand = new System.Windows.Forms.GroupBox();
             this.radStats = new System.Windows.Forms.RadioButton();
             this.radScripts = new System.Windows.Forms.RadioButton();
             this.radPlaylists = new System.Windows.Forms.RadioButton();
@@ -88,7 +88,7 @@
             toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupOptions.SuspendLayout();
             this.gtpCommand.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -447,24 +447,38 @@
             this.btnProcess.UseVisualStyleBackColor = true;
             this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
+            // radBackupMusic
+            // 
+            this.radBackupMusic.AutoSize = true;
+            this.radBackupMusic.Location = new System.Drawing.Point(16, 136);
+            this.radBackupMusic.Name = "radBackupMusic";
+            this.radBackupMusic.Size = new System.Drawing.Size(145, 29);
+            this.radBackupMusic.TabIndex = 1;
+            this.radBackupMusic.TabStop = true;
+            this.radBackupMusic.Text = "Backup Music";
+            this.ttipMainform.SetToolTip(this.radBackupMusic, "Copy the music files to the Output Folder, preserving the original directory tree" +
+        "");
+            this.radBackupMusic.UseVisualStyleBackColor = true;
+            this.radBackupMusic.Click += new System.EventHandler(this.radBackupMusic_Click);
+            // 
             // openRekordboxXML
             // 
             this.openRekordboxXML.Filter = "XML Files|*.xml";
             // 
-            // groupBox1
+            // groupOptions
             // 
-            this.groupBox1.Controls.Add(this.chkOrphans);
-            this.groupBox1.Controls.Add(this.chkDuplicates);
-            this.groupBox1.Controls.Add(this.chkMissing);
-            this.groupBox1.Controls.Add(this.chkUntagged);
-            this.groupBox1.Controls.Add(this.chkUnanalyzed);
-            this.groupBox1.Controls.Add(this.chkUnreferenced);
-            this.groupBox1.Location = new System.Drawing.Point(318, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(214, 252);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Options";
+            this.groupOptions.Controls.Add(this.chkOrphans);
+            this.groupOptions.Controls.Add(this.chkDuplicates);
+            this.groupOptions.Controls.Add(this.chkMissing);
+            this.groupOptions.Controls.Add(this.chkUntagged);
+            this.groupOptions.Controls.Add(this.chkUnanalyzed);
+            this.groupOptions.Controls.Add(this.chkUnreferenced);
+            this.groupOptions.Location = new System.Drawing.Point(318, 48);
+            this.groupOptions.Name = "groupOptions";
+            this.groupOptions.Size = new System.Drawing.Size(214, 252);
+            this.groupOptions.TabIndex = 8;
+            this.groupOptions.TabStop = false;
+            this.groupOptions.Text = "Options";
             // 
             // gtpCommand
             // 
@@ -479,17 +493,6 @@
             this.gtpCommand.TabStop = false;
             this.gtpCommand.Text = "Commands";
             // 
-            // radBackupMusic
-            // 
-            this.radBackupMusic.AutoSize = true;
-            this.radBackupMusic.Location = new System.Drawing.Point(16, 136);
-            this.radBackupMusic.Name = "radBackupMusic";
-            this.radBackupMusic.Size = new System.Drawing.Size(145, 29);
-            this.radBackupMusic.TabIndex = 1;
-            this.radBackupMusic.TabStop = true;
-            this.radBackupMusic.Text = "Backup Music";
-            this.radBackupMusic.UseVisualStyleBackColor = true;
-            // 
             // radStats
             // 
             this.radStats.AutoSize = true;
@@ -500,6 +503,7 @@
             this.radStats.TabStop = true;
             this.radStats.Text = "Show Statistics";
             this.radStats.UseVisualStyleBackColor = true;
+            this.radStats.Click += new System.EventHandler(this.radStats_Click);
             // 
             // radScripts
             // 
@@ -524,6 +528,7 @@
             this.radPlaylists.TabStop = true;
             this.radPlaylists.Text = "Generate M3U8 Playlists";
             this.radPlaylists.UseVisualStyleBackColor = true;
+            this.radPlaylists.Click += new System.EventHandler(this.radPlaylists_Click);
             // 
             // txtLog
             // 
@@ -562,7 +567,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.gtpCommand);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupOptions);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -575,8 +580,8 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupOptions.ResumeLayout(false);
+            this.groupOptions.PerformLayout();
             this.gtpCommand.ResumeLayout(false);
             this.gtpCommand.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -621,7 +626,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolTip ttipMainform;
         private System.Windows.Forms.OpenFileDialog openRekordboxXML;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupOptions;
         private System.Windows.Forms.CheckBox chkOrphans;
         private System.Windows.Forms.CheckBox chkDuplicates;
         private System.Windows.Forms.CheckBox chkMissing;

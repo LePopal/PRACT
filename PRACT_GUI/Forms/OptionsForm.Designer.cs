@@ -238,7 +238,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1220, 296);
+            this.ClientSize = new System.Drawing.Size(1220, 293);
             this.Controls.Add(this.btnMusicFolder);
             this.Controls.Add(this.chkCleanExit);
             this.Controls.Add(this.chkCleanStartup);
