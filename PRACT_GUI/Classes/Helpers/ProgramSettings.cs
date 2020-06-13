@@ -118,6 +118,21 @@ namespace PRACT.Classes.Helpers
             }
         }
 
+        public static string Language
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(settings.Language))
+                    return settings.Language;
+                else
+                    return "en";
+            }
+            set
+            {
+                settings.Language = value;
+                settings.Save();
+            }
+        }
         private static Settings settings
         {
             get

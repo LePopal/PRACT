@@ -51,6 +51,8 @@
             this.btnMusicFolder = new System.Windows.Forms.Button();
             this.musicFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
+            this.cbLang = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -197,7 +199,7 @@
             // 
             this.chkCleanStartup.AutoSize = true;
             this.chkCleanStartup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chkCleanStartup.Location = new System.Drawing.Point(13, 171);
+            this.chkCleanStartup.Location = new System.Drawing.Point(218, 206);
             this.chkCleanStartup.Name = "chkCleanStartup";
             this.chkCleanStartup.Size = new System.Drawing.Size(216, 29);
             this.chkCleanStartup.TabIndex = 9;
@@ -232,6 +234,26 @@
             // 
             this.openRekordboxXML.Filter = "XML Files|*.xml";
             // 
+            // cbLang
+            // 
+            this.cbLang.DisplayMember = "Name";
+            this.cbLang.FormattingEnabled = true;
+            this.cbLang.Location = new System.Drawing.Point(218, 162);
+            this.cbLang.Name = "cbLang";
+            this.cbLang.Size = new System.Drawing.Size(182, 33);
+            this.cbLang.TabIndex = 11;
+            this.cbLang.ValueMember = "Locale";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(12, 165);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 25);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Language";
+            // 
             // OptionsForm
             // 
             this.AcceptButton = this.btnOK;
@@ -239,6 +261,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1220, 293);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbLang);
             this.Controls.Add(this.btnMusicFolder);
             this.Controls.Add(this.chkCleanExit);
             this.Controls.Add(this.chkCleanStartup);
@@ -290,5 +314,7 @@
         private System.Windows.Forms.Button btnMusicFolder;
         private System.Windows.Forms.FolderBrowserDialog musicFolderDialog;
         private System.Windows.Forms.OpenFileDialog openRekordboxXML;
+        private System.Windows.Forms.ComboBox cbLang;
+        private System.Windows.Forms.Label label4;
     }
 }

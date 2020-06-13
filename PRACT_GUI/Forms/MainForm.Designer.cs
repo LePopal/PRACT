@@ -74,7 +74,7 @@
             this.radBackupMusic = new System.Windows.Forms.RadioButton();
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
             this.groupOptions = new System.Windows.Forms.GroupBox();
-            this.gtpCommand = new System.Windows.Forms.GroupBox();
+            this.grpCommand = new System.Windows.Forms.GroupBox();
             this.radStats = new System.Windows.Forms.RadioButton();
             this.radScripts = new System.Windows.Forms.RadioButton();
             this.radPlaylists = new System.Windows.Forms.RadioButton();
@@ -82,6 +82,7 @@
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.progBar = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +90,7 @@
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.groupOptions.SuspendLayout();
-            this.gtpCommand.SuspendLayout();
+            this.grpCommand.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -480,18 +481,18 @@
             this.groupOptions.TabStop = false;
             this.groupOptions.Text = "Options";
             // 
-            // gtpCommand
+            // grpCommand
             // 
-            this.gtpCommand.Controls.Add(this.radBackupMusic);
-            this.gtpCommand.Controls.Add(this.radStats);
-            this.gtpCommand.Controls.Add(this.radScripts);
-            this.gtpCommand.Controls.Add(this.radPlaylists);
-            this.gtpCommand.Location = new System.Drawing.Point(12, 48);
-            this.gtpCommand.Name = "gtpCommand";
-            this.gtpCommand.Size = new System.Drawing.Size(300, 188);
-            this.gtpCommand.TabIndex = 9;
-            this.gtpCommand.TabStop = false;
-            this.gtpCommand.Text = "Commands";
+            this.grpCommand.Controls.Add(this.radBackupMusic);
+            this.grpCommand.Controls.Add(this.radStats);
+            this.grpCommand.Controls.Add(this.radScripts);
+            this.grpCommand.Controls.Add(this.radPlaylists);
+            this.grpCommand.Location = new System.Drawing.Point(12, 48);
+            this.grpCommand.Name = "grpCommand";
+            this.grpCommand.Size = new System.Drawing.Size(300, 188);
+            this.grpCommand.TabIndex = 9;
+            this.grpCommand.TabStop = false;
+            this.grpCommand.Text = "Commands";
             // 
             // radStats
             // 
@@ -557,16 +558,27 @@
             this.progBar.Size = new System.Drawing.Size(1277, 34);
             this.progBar.TabIndex = 13;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(143, 242);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 34);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnProcess;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1308, 408);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.progBar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnProcess);
-            this.Controls.Add(this.gtpCommand);
+            this.Controls.Add(this.grpCommand);
             this.Controls.Add(this.groupOptions);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
@@ -582,8 +594,8 @@
             this.statusStrip.PerformLayout();
             this.groupOptions.ResumeLayout(false);
             this.groupOptions.PerformLayout();
-            this.gtpCommand.ResumeLayout(false);
-            this.gtpCommand.PerformLayout();
+            this.grpCommand.ResumeLayout(false);
+            this.grpCommand.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -645,6 +657,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar progBar;
         private System.Windows.Forms.RadioButton radBackupMusic;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox grpCommand;
     }
 }
 

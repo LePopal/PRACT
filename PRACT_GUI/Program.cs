@@ -1,7 +1,10 @@
+using PRACT.Classes.Helpers;
 using PRACT.Rekordbox5.Data;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +19,7 @@ namespace PRACT_GUI
         [STAThread]
         static void Main()
         {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(ProgramSettings.Language);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

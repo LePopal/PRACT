@@ -8,6 +8,8 @@ using PRACT.Rekordbox5.Helpers;
 using PRACT_OBS;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -25,9 +27,10 @@ namespace PRACT_GUI
         public MainForm()
         {
             InitializeComponent();
+            btnProcess.Text = 
             this.Text = Application.ProductName;
             RefreshStatusBar();
-
+            ApplyLocalizationToControls(this.Controls);
             this.ttipMainform.AutoPopDelay = 5000;
             this.ttipMainform.InitialDelay = 1000;
             this.ttipMainform.ReshowDelay = 500;
@@ -144,7 +147,7 @@ namespace PRACT_GUI
                 else if (radStats.Checked)
                 {
                     worker.ReportProgress(0,"Calculating music library files size...");
-                    worker.ReportProgress(100,string.Format(new FileSizeFormatProvider(), "Total size : {0:fs}", PlaylistHelper.Playlists.Size));
+                    worker.ReportProgress(100,string.Format(new FileSizeFormatProvider(), "Total size: {0:fs}", PlaylistHelper.Playlists.Size));
                 }
                 else if (radBackupMusic.Checked)
                 {
@@ -312,5 +315,53 @@ namespace PRACT_GUI
         {
             groupOptions.Enabled = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //PlaylistManager playlistManager = new PlaylistManager();
+            //playlistManager.Show();
+            ApplyLocalizationToControls(this.Controls);
+            ApplyLocalizationToMenu(this.menuStrip1.Items);
+        }
+
+        private void ApplyLocalizationToControls(Control.ControlCollection cc)
+        {
+            foreach(Control c in cc)
+            {
+                if (c.Controls.Count > 0)
+                    ApplyLocalizationToControls(c.Controls);
+                else
+                    try
+                    {
+                        ButtonBase bb = (ButtonBase)c;
+                        bb.Text = PRACT.Properties.strings.ResourceManager.GetString(bb.Text);
+                    }
+                    catch { }
+            }
+        }
+
+        private void ApplyLocalizationToMenu(ToolStripItemCollection col)
+        {
+            foreach (var c in col)
+            {
+                try
+                {
+                    ToolStripMenuItem i = (ToolStripMenuItem)c;
+                    if (i.DropDownItems.Count > 0)
+                        ApplyLocalizationToMenu(i.DropDownItems);
+                    Trace.WriteLine(c.ToString());
+                }
+                catch { }
+            }
+        }
+        private void OutputText(ToolStripItemCollection col)
+        {
+            foreach (ToolStripMenuItem c in col)
+            {
+
+                Trace.WriteLine(c.ToString());
+            }
+        }
+
     }
 }

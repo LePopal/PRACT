@@ -1,4 +1,5 @@
 ﻿using PRACT.Classes.Helpers;
+using PRACT.Common.UI;
 using PRACT.Properties;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ namespace PRACT_OBS
         public OptionsForm()
         {
             InitializeComponent();
+            cbLang.Items.AddRange(Languages.SupportedLanguages.ToArray());
+
+
             chkMine.Checked = ProgramSettings.PassphraseToMine;
             if (ProgramSettings.PassphraseToMine)
             {
@@ -31,6 +35,8 @@ namespace PRACT_OBS
             txtRekordboxXMLFile.Text = ProgramSettings.RekordboxXMLFile;
             chkCleanStartup.Checked = ProgramSettings.CleanFilesAtStartup;
             chkCleanExit.Checked = ProgramSettings.CleanFilesAtShutDown;
+            cbLang.SelectedItem = Languages.GetLanguageByLocale(ProgramSettings.Language);
+
             this.ttipOptions.AutoPopDelay = 5000;
             this.ttipOptions.InitialDelay = 1000;
             this.ttipOptions.ReshowDelay = 500;
@@ -69,7 +75,7 @@ namespace PRACT_OBS
             ProgramSettings.CleanFilesAtStartup = chkCleanStartup.Checked;
             ProgramSettings.MusicFolder = txtMusicFolder.Text;
             ProgramSettings.RekordboxXMLFile = txtRekordboxXMLFile.Text;
-
+            ProgramSettings.Language = ((Language)cbLang.SelectedItem).Locale;
             this.Close();
         }
             
