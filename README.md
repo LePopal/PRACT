@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/LePopal/PRACT/blob/GUI/PRACT_GUI/Pictures/PRACT_GUI_Snapshot.png)
+![Screenshot](https://github.com/LePopal/PRACT/blob/GUI/PRACT_GUI/Pictures/PRACT_GUI_BackupMusic1.png)
 
 # PRACT
 **Popal's Rekordbox.xml Analysis and Clean up Tool** is a program design to address several limitations in the Rekordbox Library management features including:
@@ -7,6 +7,7 @@
 * Listing un-prepared tracks
 * Listing files on disk that are not referenced in the library
 * Exporting the list of missings files
+* Copy music files to another location (v0.6)
 
 PRACT will analyze a  library exported as an XML File then export some m3u8 files containing references to the duplicate, unlisted, unprepared, unreferenced and missing tracks. You can then import those list as a playlist in Rekordbox for further investigation.
 
