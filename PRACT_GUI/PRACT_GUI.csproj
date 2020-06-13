@@ -59,7 +59,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\strings.fr.resx">
-      <Generator></Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

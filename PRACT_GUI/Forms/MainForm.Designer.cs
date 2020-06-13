@@ -73,14 +73,14 @@
             this.btnProcess = new System.Windows.Forms.Button();
             this.radBackupMusic = new System.Windows.Forms.RadioButton();
             this.openRekordboxXML = new System.Windows.Forms.OpenFileDialog();
-            this.groupOptions = new System.Windows.Forms.GroupBox();
+            this.grpOptions = new System.Windows.Forms.GroupBox();
             this.grpCommand = new System.Windows.Forms.GroupBox();
             this.radStats = new System.Windows.Forms.RadioButton();
             this.radScripts = new System.Windows.Forms.RadioButton();
             this.radPlaylists = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpProcessLog = new System.Windows.Forms.GroupBox();
             this.progBar = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
             contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,9 +89,9 @@
             toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            this.groupOptions.SuspendLayout();
+            this.grpOptions.SuspendLayout();
             this.grpCommand.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpProcessLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentsToolStripMenuItem
@@ -466,20 +466,20 @@
             // 
             this.openRekordboxXML.Filter = "XML Files|*.xml";
             // 
-            // groupOptions
+            // grpOptions
             // 
-            this.groupOptions.Controls.Add(this.chkOrphans);
-            this.groupOptions.Controls.Add(this.chkDuplicates);
-            this.groupOptions.Controls.Add(this.chkMissing);
-            this.groupOptions.Controls.Add(this.chkUntagged);
-            this.groupOptions.Controls.Add(this.chkUnanalyzed);
-            this.groupOptions.Controls.Add(this.chkUnreferenced);
-            this.groupOptions.Location = new System.Drawing.Point(318, 48);
-            this.groupOptions.Name = "groupOptions";
-            this.groupOptions.Size = new System.Drawing.Size(214, 252);
-            this.groupOptions.TabIndex = 8;
-            this.groupOptions.TabStop = false;
-            this.groupOptions.Text = "Options";
+            this.grpOptions.Controls.Add(this.chkOrphans);
+            this.grpOptions.Controls.Add(this.chkDuplicates);
+            this.grpOptions.Controls.Add(this.chkMissing);
+            this.grpOptions.Controls.Add(this.chkUntagged);
+            this.grpOptions.Controls.Add(this.chkUnanalyzed);
+            this.grpOptions.Controls.Add(this.chkUnreferenced);
+            this.grpOptions.Location = new System.Drawing.Point(318, 48);
+            this.grpOptions.Name = "grpOptions";
+            this.grpOptions.Size = new System.Drawing.Size(214, 252);
+            this.grpOptions.TabIndex = 8;
+            this.grpOptions.TabStop = false;
+            this.grpOptions.Text = "Options";
             // 
             // grpCommand
             // 
@@ -541,15 +541,15 @@
             this.txtLog.Size = new System.Drawing.Size(745, 212);
             this.txtLog.TabIndex = 11;
             // 
-            // groupBox2
+            // grpProcessLog
             // 
-            this.groupBox2.Controls.Add(this.txtLog);
-            this.groupBox2.Location = new System.Drawing.Point(539, 48);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(757, 252);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Process log";
+            this.grpProcessLog.Controls.Add(this.txtLog);
+            this.grpProcessLog.Location = new System.Drawing.Point(539, 48);
+            this.grpProcessLog.Name = "grpProcessLog";
+            this.grpProcessLog.Size = new System.Drawing.Size(757, 252);
+            this.grpProcessLog.TabIndex = 12;
+            this.grpProcessLog.TabStop = false;
+            this.grpProcessLog.Text = "Process log";
             // 
             // progBar
             // 
@@ -576,10 +576,10 @@
             this.ClientSize = new System.Drawing.Size(1308, 408);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.progBar);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpProcessLog);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.grpCommand);
-            this.Controls.Add(this.groupOptions);
+            this.Controls.Add(this.grpOptions);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -592,12 +592,12 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.groupOptions.ResumeLayout(false);
-            this.groupOptions.PerformLayout();
+            this.grpOptions.ResumeLayout(false);
+            this.grpOptions.PerformLayout();
             this.grpCommand.ResumeLayout(false);
             this.grpCommand.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpProcessLog.ResumeLayout(false);
+            this.grpProcessLog.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,7 +638,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolTip ttipMainform;
         private System.Windows.Forms.OpenFileDialog openRekordboxXML;
-        private System.Windows.Forms.GroupBox groupOptions;
+        private System.Windows.Forms.GroupBox grpOptions;
         private System.Windows.Forms.CheckBox chkOrphans;
         private System.Windows.Forms.CheckBox chkDuplicates;
         private System.Windows.Forms.CheckBox chkMissing;
@@ -654,7 +654,7 @@
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.ToolStripStatusLabel tsCurrentProcess;
         private System.Windows.Forms.TextBox txtLog;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpProcessLog;
         private System.Windows.Forms.ProgressBar progBar;
         private System.Windows.Forms.RadioButton radBackupMusic;
         private System.Windows.Forms.Button button1;

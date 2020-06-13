@@ -162,4 +162,13 @@
   <data name="&amp;Tools" xml:space="preserve">
     <value>&amp;Outils</value>
   </data>
+  <data name="Commands" xml:space="preserve">
+    <value>Commandes</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Process log" xml:space="preserve">
+    <value>Journal d'exécution</value>
+  </data>
 </root>

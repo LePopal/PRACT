@@ -165,6 +165,9 @@
   <data name="Checking files stored in" xml:space="preserve">
     <value>Checking files stored in</value>
   </data>
+  <data name="Commands" xml:space="preserve">
+    <value>Commands</value>
+  </data>
   <data name="Cu&amp;t" xml:space="preserve">
     <value>Cu&amp;t</value>
   </data>
@@ -201,6 +204,9 @@
   <data name="music files processed" xml:space="preserve">
     <value>music files processed</value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="Orphans" xml:space="preserve">
     <value>Orphans</value>
   </data>
@@ -212,6 +218,9 @@
   </data>
   <data name="Process" xml:space="preserve">
     <value>Process</value>
+  </data>
+  <data name="Process Log" xml:space="preserve">
+    <value>Process Log</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Processing</value>

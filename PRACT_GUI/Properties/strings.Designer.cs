@@ -205,6 +205,15 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commands.
+        /// </summary>
+        internal static string Commands {
+            get {
+                return ResourceManager.GetString("Commands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cu&amp;t.
         /// </summary>
         internal static string Cu_t {
@@ -313,6 +322,15 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        internal static string Options {
+            get {
+                return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orphans.
         /// </summary>
         internal static string Orphans {
@@ -345,6 +363,15 @@ namespace PRACT.Properties {
         internal static string Process {
             get {
                 return ResourceManager.GetString("Process", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process Log.
+        /// </summary>
+        internal static string Process_Log {
+            get {
+                return ResourceManager.GetString("Process Log", resourceCulture);
             }
         }
         

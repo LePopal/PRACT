@@ -27,10 +27,14 @@ namespace PRACT_GUI
         public MainForm()
         {
             InitializeComponent();
-            btnProcess.Text = 
+            
             this.Text = Application.ProductName;
             RefreshStatusBar();
             ApplyLocalizationToControls(this.Controls);
+            grpCommand.Text = rm.GetString(grpCommand.Text);
+            grpOptions.Text = rm.GetString(grpOptions.Text);
+            grpProcessLog.Text = rm.GetString(grpProcessLog.Text);
+
             this.ttipMainform.AutoPopDelay = 5000;
             this.ttipMainform.InitialDelay = 1000;
             this.ttipMainform.ReshowDelay = 500;
@@ -303,17 +307,17 @@ namespace PRACT_GUI
 
         private void radBackupMusic_Click(object sender, EventArgs e)
         {
-            groupOptions.Enabled = false;
+            grpOptions.Enabled = false;
         }
 
         private void radStats_Click(object sender, EventArgs e)
         {
-            groupOptions.Enabled = false;
+            grpOptions.Enabled = false;
         }
 
         private void radPlaylists_Click(object sender, EventArgs e)
         {
-            groupOptions.Enabled = true;
+            grpOptions.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -322,6 +326,7 @@ namespace PRACT_GUI
             //playlistManager.Show();
             ApplyLocalizationToControls(this.Controls);
             ApplyLocalizationToMenu(this.menuStrip1.Items);
+
         }
 
         private void ApplyLocalizationToControls(Control.ControlCollection cc)
@@ -331,12 +336,11 @@ namespace PRACT_GUI
                 if (c.Controls.Count > 0)
                     ApplyLocalizationToControls(c.Controls);
                 else
-                    try
-                    {
-                        ButtonBase bb = (ButtonBase)c;
-                        bb.Text = PRACT.Properties.strings.ResourceManager.GetString(bb.Text);
-                    }
-                    catch { }
+                {
+                        Trace.WriteLine($"{ c.Name } - { c.Text }");
+                        c.Text = rm.GetString(c.Text);
+                }
+                    
             }
         }
 
@@ -363,5 +367,12 @@ namespace PRACT_GUI
             }
         }
 
+        private System.Resources.ResourceManager rm
+        {
+            get
+            {
+                return PRACT.Properties.strings.ResourceManager;
+            }
+        }
     }
 }
