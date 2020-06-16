@@ -187,11 +187,11 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calculating music library files size....
+        ///   Looks up a localized string similar to Calculating music library files size.
         /// </summary>
-        internal static string Calculating_music_library_files_size___ {
+        internal static string Calculating_music_library_files_size {
             get {
-                return ResourceManager.GetString("Calculating music library files size...", resourceCulture);
+                return ResourceManager.GetString("Calculating music library files size", resourceCulture);
             }
         }
         
@@ -205,11 +205,29 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelling.
+        /// </summary>
+        internal static string Cancelling {
+            get {
+                return ResourceManager.GetString("Cancelling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checking files stored in.
         /// </summary>
         internal static string Checking_files_stored_in {
             get {
                 return ResourceManager.GetString("Checking files stored in", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closing program.
+        /// </summary>
+        internal static string Closing_program {
+            get {
+                return ResourceManager.GetString("Closing program", resourceCulture);
             }
         }
         
@@ -264,6 +282,15 @@ namespace PRACT.Properties {
         internal static string File_not_found {
             get {
                 return ResourceManager.GetString("File not found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to file(s) could not be copied.
+        /// </summary>
+        internal static string file_s__could_not_be_copied {
+            get {
+                return ResourceManager.GetString("file(s) could not be copied", resourceCulture);
             }
         }
         
