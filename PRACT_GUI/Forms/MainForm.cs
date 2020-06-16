@@ -33,8 +33,7 @@ namespace PRACT_GUI
             this.Text = Application.ProductName;
             RefreshStatusBar();
             ApplyLocalizationToControls(this.Controls);
-            grpCommand.Text = rm.GetString(grpCommand.Text);
-            grpOptions.Text = rm.GetString(grpOptions.Text);
+            ApplyLocalizationToMenu(menuStrip1.Items);
             grpProcessLog.Text = rm.GetString(grpProcessLog.Text);
 
             this.ttipMainform.AutoPopDelay = 5000;
@@ -203,8 +202,8 @@ namespace PRACT_GUI
                     if (errorsCount > 0)
                         worker.ReportProgress(100, $"Error: { errorsCount } file(s) could not be copied.");
                 }
-                worker.ReportProgress(100,"Finished!");
-                tsCurrentProcess.Text = "Finished !";
+                worker.ReportProgress(100, rm.GetString("Finished!"));
+                tsCurrentProcess.Text = rm.GetString("Finished!");
             }
             else
             {
@@ -222,18 +221,18 @@ namespace PRACT_GUI
 
             if (e.Cancelled)
             {
-                tbl.Log("Cancelled!");
+                tbl.Log(rm.GetString("Cancelled!"));
                 progBar.Value = 0;
             }
             else if (e.Error != null)
             {
-                tbl.Log("Error!");
+                tbl.Log(rm.GetString("Error!"));
             }
             else
             {
-                tbl.Log("Done!");
+                tbl.Log(rm.GetString("Finished!"));
             }
-            tsCurrentProcess.Text = "Idle";
+            tsCurrentProcess.Text = rm.GetString("Idle!") ;
             StopProcess();
         }
 
@@ -334,40 +333,28 @@ namespace PRACT_GUI
         {
             foreach(Control c in cc)
             {
+                Trace.WriteLine($"{ c.Name } - { c.Text }");
+                c.Text = rm.GetString(c.Text);
+                ttipMainform.SetToolTip(c, rm.GetString($"tooltip.{ this.Name }.{ c.Name }"));
                 if (c.Controls.Count > 0)
                 {
                     ApplyLocalizationToControls(c.Controls);
                 }
-                else
-                {
-                    Trace.WriteLine($"{ c.Name } - { c.Text }");
-                    c.Text = rm.GetString(c.Text);
-                    ttipMainform.SetToolTip(c, rm.GetString($"tooltip.{ this.Name }.{ c.Name }"));
-                }
-
             }
         }
+
 
         private void ApplyLocalizationToMenu(ToolStripItemCollection col)
         {
             foreach (var c in col)
             {
-                try
+                if (c is ToolStripMenuItem)
                 {
                     ToolStripMenuItem i = (ToolStripMenuItem)c;
                     if (i.DropDownItems.Count > 0)
                         ApplyLocalizationToMenu(i.DropDownItems);
                     Trace.WriteLine(c.ToString());
                 }
-                catch { }
-            }
-        }
-        private void OutputText(ToolStripItemCollection col)
-        {
-            foreach (ToolStripMenuItem c in col)
-            {
-
-                Trace.WriteLine(c.ToString());
             }
         }
 

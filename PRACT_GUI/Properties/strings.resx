@@ -162,6 +162,9 @@
   <data name="Calculating music library files size..." xml:space="preserve">
     <value>Calculating music library files size...</value>
   </data>
+  <data name="Cancelled!" xml:space="preserve">
+    <value>Cancelled!</value>
+  </data>
   <data name="Checking files stored in" xml:space="preserve">
     <value>Checking files stored in</value>
   </data>
@@ -291,7 +294,7 @@
   <data name="tooltip.MainForm.chkUntagged" xml:space="preserve">
     <value>Tracks without metadata (ID3)</value>
   </data>
-  <data name="tooltip.MainForm.pgBar" xml:space="preserve">
+  <data name="tooltip.MainForm.progBar" xml:space="preserve">
     <value>Process progression</value>
   </data>
   <data name="Total size:" xml:space="preserve">

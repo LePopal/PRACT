@@ -196,6 +196,15 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelled!.
+        /// </summary>
+        internal static string Cancelled_ {
+            get {
+                return ResourceManager.GetString("Cancelled!", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checking files stored in.
         /// </summary>
         internal static string Checking_files_stored_in {
@@ -585,9 +594,9 @@ namespace PRACT.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Process progression.
         /// </summary>
-        internal static string tooltip_MainForm_pgBar {
+        internal static string tooltip_MainForm_progBar {
             get {
-                return ResourceManager.GetString("tooltip.MainForm.pgBar", resourceCulture);
+                return ResourceManager.GetString("tooltip.MainForm.progBar", resourceCulture);
             }
         }
         
