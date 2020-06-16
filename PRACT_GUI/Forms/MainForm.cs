@@ -8,6 +8,7 @@ using PRACT.Rekordbox5.Data;
 using PRACT.Rekordbox5.Helpers;
 using PRACT_OBS;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -334,13 +335,16 @@ namespace PRACT_GUI
             foreach(Control c in cc)
             {
                 if (c.Controls.Count > 0)
+                {
                     ApplyLocalizationToControls(c.Controls);
+                }
                 else
                 {
-                        Trace.WriteLine($"{ c.Name } - { c.Text }");
-                        c.Text = rm.GetString(c.Text);
+                    Trace.WriteLine($"{ c.Name } - { c.Text }");
+                    c.Text = rm.GetString(c.Text);
+                    ttipMainform.SetToolTip(c, rm.GetString($"tooltip.{ this.Name }.{ c.Name }"));
                 }
-                    
+
             }
         }
 

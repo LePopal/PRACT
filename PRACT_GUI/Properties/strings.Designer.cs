@@ -286,6 +286,15 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Idle.
+        /// </summary>
+        internal static string Idle {
+            get {
+                return ResourceManager.GetString("Idle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to impossible to copy.
         /// </summary>
         internal static string impossible_to_copy {
@@ -369,9 +378,9 @@ namespace PRACT.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Process Log.
         /// </summary>
-        internal static string Process_Log {
+        internal static string Process_log {
             get {
-                return ResourceManager.GetString("Process Log", resourceCulture);
+                return ResourceManager.GetString("Process log", resourceCulture);
             }
         }
         
@@ -513,9 +522,72 @@ namespace PRACT.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Start processing.
         /// </summary>
-        internal static string tooltip_MainForm_BtnProcess {
+        internal static string tooltip_MainForm_btnProcess {
             get {
-                return ResourceManager.GetString("tooltip.MainForm.BtnProcess", resourceCulture);
+                return ResourceManager.GetString("tooltip.MainForm.btnProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicates are track with the same artist and title.
+        /// </summary>
+        internal static string tooltip_MainForm_chkDuplicates {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.chkDuplicates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracks that can&apos;t be found on disk.
+        /// </summary>
+        internal static string tooltip_MainForm_chkMissing {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.chkMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orphans are tracks not listed in any playlist.
+        /// </summary>
+        internal static string tooltip_MainForm_chkOrphans {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.chkOrphans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracks that were not properly prepared and analyzed.
+        /// </summary>
+        internal static string tooltip_MainForm_chkUnanalyzed {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.chkUnanalyzed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracks from the Music folder that have not been imported in the library.
+        /// </summary>
+        internal static string tooltip_MainForm_chkUnreferenced {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.chkUnreferenced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracks without metadata (ID3).
+        /// </summary>
+        internal static string tooltip_MainForm_chkUntagged {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.chkUntagged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process progression.
+        /// </summary>
+        internal static string tooltip_MainForm_pgBar {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.pgBar", resourceCulture);
             }
         }
         

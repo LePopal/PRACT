@@ -192,6 +192,9 @@
   <data name="Generate Scripts" xml:space="preserve">
     <value>Generate Scripts</value>
   </data>
+  <data name="Idle" xml:space="preserve">
+    <value>Idle</value>
+  </data>
   <data name="impossible to copy" xml:space="preserve">
     <value>impossible to copy</value>
   </data>
@@ -219,7 +222,7 @@
   <data name="Process" xml:space="preserve">
     <value>Process</value>
   </data>
-  <data name="Process Log" xml:space="preserve">
+  <data name="Process log" xml:space="preserve">
     <value>Process Log</value>
   </data>
   <data name="Processing" xml:space="preserve">
@@ -267,8 +270,29 @@
   <data name="to" xml:space="preserve">
     <value>to</value>
   </data>
-  <data name="tooltip.MainForm.BtnProcess" xml:space="preserve">
+  <data name="tooltip.MainForm.btnProcess" xml:space="preserve">
     <value>Start processing</value>
+  </data>
+  <data name="tooltip.MainForm.chkDuplicates" xml:space="preserve">
+    <value>Duplicates are track with the same artist and title</value>
+  </data>
+  <data name="tooltip.MainForm.chkMissing" xml:space="preserve">
+    <value>Tracks that can't be found on disk</value>
+  </data>
+  <data name="tooltip.MainForm.chkOrphans" xml:space="preserve">
+    <value>Orphans are tracks not listed in any playlist</value>
+  </data>
+  <data name="tooltip.MainForm.chkUnanalyzed" xml:space="preserve">
+    <value>Tracks that were not properly prepared and analyzed</value>
+  </data>
+  <data name="tooltip.MainForm.chkUnreferenced" xml:space="preserve">
+    <value>Tracks from the Music folder that have not been imported in the library</value>
+  </data>
+  <data name="tooltip.MainForm.chkUntagged" xml:space="preserve">
+    <value>Tracks without metadata (ID3)</value>
+  </data>
+  <data name="tooltip.MainForm.pgBar" xml:space="preserve">
+    <value>Process progression</value>
   </data>
   <data name="Total size:" xml:space="preserve">
     <value>Total size:</value>
