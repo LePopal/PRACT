@@ -267,6 +267,9 @@
   <data name="to" xml:space="preserve">
     <value>to</value>
   </data>
+  <data name="tooltip.MainForm.BtnProcess" xml:space="preserve">
+    <value>Start processing</value>
+  </data>
   <data name="Total size:" xml:space="preserve">
     <value>Total size:</value>
   </data>

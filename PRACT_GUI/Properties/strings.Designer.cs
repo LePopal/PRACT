@@ -511,6 +511,15 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start processing.
+        /// </summary>
+        internal static string tooltip_MainForm_BtnProcess {
+            get {
+                return ResourceManager.GetString("tooltip.MainForm.BtnProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total size:.
         /// </summary>
         internal static string Total_size_ {

@@ -1,4 +1,5 @@
-﻿using PRACT.Classes.Helpers;
+﻿using PRACT.Classes;
+using PRACT.Classes.Helpers;
 using PRACT.Common;
 using PRACT.Common.IO;
 using PRACT.Common.UI;
@@ -324,8 +325,7 @@ namespace PRACT_GUI
         {
             //PlaylistManager playlistManager = new PlaylistManager();
             //playlistManager.Show();
-            ApplyLocalizationToControls(this.Controls);
-            ApplyLocalizationToMenu(this.menuStrip1.Items);
+            Trace.WriteLine(TypeDescriptor.GetComponentName(this.btnProcess));
 
         }
 
