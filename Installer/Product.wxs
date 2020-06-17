@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define PRACT_GUI_TargetDir=$(var.PRACT_GUI.TargetDir)?>
-	<Product Id="dd9c5380-7eb4-4e43-83a5-10d39ceeb50c" Name="PRACT" Language="1033" Version="0.6.0.0" Manufacturer="Popal" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
+	<Product Id="dd9c5380-7eb4-4e43-83a5-10d39ceeb50c" Name="PRACT" Language="1033" Version="0.7.0.0" Manufacturer="Popal" UpgradeCode="6f654668-4723-49b0-b1e9-bbac21261c4d">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="PRACT, Popal's Rekordbox Analysis and Clean up Tool"/>
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
