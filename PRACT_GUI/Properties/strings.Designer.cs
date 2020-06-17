@@ -61,6 +61,15 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        internal static string ___ {
+            get {
+                return ResourceManager.GetString("...", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;About....
         /// </summary>
         internal static string _About___ {
@@ -192,6 +201,15 @@ namespace PRACT.Properties {
         internal static string Calculating_music_library_files_size {
             get {
                 return ResourceManager.GetString("Calculating music library files size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -349,6 +367,33 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key.
+        /// </summary>
+        internal static string Key {
+            get {
+                return ResourceManager.GetString("Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mine for the key.
+        /// </summary>
+        internal static string Mine_for_the_key {
+            get {
+                return ResourceManager.GetString("Mine for the key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Missing.
         /// </summary>
         internal static string Missing {
@@ -367,6 +412,24 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Music Folder.
+        /// </summary>
+        internal static string Music_Folder {
+            get {
+                return ResourceManager.GetString("Music Folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         internal static string Options {
@@ -381,6 +444,15 @@ namespace PRACT.Properties {
         internal static string Orphans {
             get {
                 return ResourceManager.GetString("Orphans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output Folder.
+        /// </summary>
+        internal static string Output_Folder {
+            get {
+                return ResourceManager.GetString("Output Folder", resourceCulture);
             }
         }
         
@@ -480,6 +552,15 @@ namespace PRACT.Properties {
         internal static string Processing_untagged_tracks___ {
             get {
                 return ResourceManager.GetString("Processing untagged tracks...", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rekordbox XML File.
+        /// </summary>
+        internal static string Rekordbox_XML_File {
+            get {
+                return ResourceManager.GetString("Rekordbox XML File", resourceCulture);
             }
         }
         
@@ -628,6 +709,60 @@ namespace PRACT.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose on-screen language. Requires restart..
+        /// </summary>
+        internal static string tooltip_OptionsForm_cbLang {
+            get {
+                return ResourceManager.GetString("tooltip.OptionsForm.cbLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rekordbox 6: Tries to automatically discover the Rekordbox database encryption Key.
+        /// </summary>
+        internal static string tooltip_OptionsForm_chkMine {
+            get {
+                return ResourceManager.GetString("tooltip.OptionsForm.chkMine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rekordbox 6: Input the Rekordbox Database Key or mine for the key (recommended).
+        /// </summary>
+        internal static string tooltip_OptionsForm_txtKey {
+            get {
+                return ResourceManager.GetString("tooltip.OptionsForm.txtKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder containing your music to DJ.
+        /// </summary>
+        internal static string tooltip_OptionsForm_txtMusicFolder {
+            get {
+                return ResourceManager.GetString("tooltip.OptionsForm.txtMusicFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder where to export the generated playlists and backup the music.
+        /// </summary>
+        internal static string tooltip_OptionsForm_txtOutputFolder {
+            get {
+                return ResourceManager.GetString("tooltip.OptionsForm.txtOutputFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rekordbox collection exported as an XML File.
+        /// </summary>
+        internal static string tooltip_OptionsForm_txtRekordboxXMLFile {
+            get {
+                return ResourceManager.GetString("tooltip.OptionsForm.txtRekordboxXMLFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total size:.
         /// </summary>
         internal static string Total_size_ {
@@ -669,6 +804,15 @@ namespace PRACT.Properties {
         internal static string Untagged {
             get {
                 return ResourceManager.GetString("Untagged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X.
+        /// </summary>
+        internal static string X {
+            get {
+                return ResourceManager.GetString("X", resourceCulture);
             }
         }
         

@@ -156,11 +156,17 @@
   <data name="&amp;Undo" xml:space="preserve">
     <value>&amp;Undo</value>
   </data>
+  <data name="..." xml:space="preserve">
+    <value>...</value>
+  </data>
   <data name="Backup Music" xml:space="preserve">
     <value>Backup Music</value>
   </data>
   <data name="Calculating music library files size" xml:space="preserve">
     <value>Calculating music library files size</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="Cancelled!" xml:space="preserve">
     <value>Cancelled!</value>
@@ -213,17 +219,35 @@
   <data name="Impossible to start processing:" xml:space="preserve">
     <value>Impossible to start processing:</value>
   </data>
+  <data name="Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Mine for the key" xml:space="preserve">
+    <value>Mine for the key</value>
+  </data>
   <data name="Missing" xml:space="preserve">
     <value>Missing</value>
   </data>
   <data name="music files processed" xml:space="preserve">
     <value>music files processed</value>
   </data>
+  <data name="Music Folder" xml:space="preserve">
+    <value>Music Folder</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
   <data name="Orphans" xml:space="preserve">
     <value>Orphans</value>
+  </data>
+  <data name="Output Folder" xml:space="preserve">
+    <value>Output Folder</value>
   </data>
   <data name="Playlists loaded!" xml:space="preserve">
     <value>Playlists loaded!</value>
@@ -257,6 +281,9 @@
   </data>
   <data name="Processing untagged tracks..." xml:space="preserve">
     <value>Processing untagged tracks...</value>
+  </data>
+  <data name="Rekordbox XML File" xml:space="preserve">
+    <value>Rekordbox XML File</value>
   </data>
   <data name="Save &amp;As" xml:space="preserve">
     <value>Save &amp;As</value>
@@ -306,6 +333,24 @@
   <data name="tooltip.MainForm.progBar" xml:space="preserve">
     <value>Process progression</value>
   </data>
+  <data name="tooltip.OptionsForm.cbLang" xml:space="preserve">
+    <value>Choose on-screen language. Requires restart.</value>
+  </data>
+  <data name="tooltip.OptionsForm.chkMine" xml:space="preserve">
+    <value>Rekordbox 6: Tries to automatically discover the Rekordbox database encryption Key</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtKey" xml:space="preserve">
+    <value>Rekordbox 6: Input the Rekordbox Database Key or mine for the key (recommended)</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtMusicFolder" xml:space="preserve">
+    <value>Folder containing your music to DJ</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtOutputFolder" xml:space="preserve">
+    <value>Folder where to export the generated playlists and backup the music</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtRekordboxXMLFile" xml:space="preserve">
+    <value>Rekordbox collection exported as an XML File</value>
+  </data>
   <data name="Total size:" xml:space="preserve">
     <value>Total size:</value>
   </data>
@@ -320,6 +365,9 @@
   </data>
   <data name="Untagged" xml:space="preserve">
     <value>Untagged</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
   </data>
   <data name="You're about to copy" xml:space="preserve">
     <value>You're about to copy</value>

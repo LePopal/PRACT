@@ -89,7 +89,6 @@
             this.txtOutputFolder.Name = "txtOutputFolder";
             this.txtOutputFolder.Size = new System.Drawing.Size(928, 31);
             this.txtOutputFolder.TabIndex = 2;
-            this.ttipOptions.SetToolTip(this.txtOutputFolder, "Folder where to output the generated playlists");
             // 
             // btnOutputFolder
             // 
@@ -138,7 +137,6 @@
             this.txtMusicFolder.Name = "txtMusicFolder";
             this.txtMusicFolder.Size = new System.Drawing.Size(929, 31);
             this.txtMusicFolder.TabIndex = 1;
-            this.ttipOptions.SetToolTip(this.txtMusicFolder, "The folder containing your DJ Music");
             // 
             // chkMine
             // 
@@ -169,7 +167,6 @@
             this.txtRekordboxXMLFile.Name = "txtRekordboxXMLFile";
             this.txtRekordboxXMLFile.Size = new System.Drawing.Size(867, 31);
             this.txtRekordboxXMLFile.TabIndex = 2;
-            this.ttipOptions.SetToolTip(this.txtRekordboxXMLFile, "Rekordbox collection exported as an XML File");
             // 
             // label6
             // 
@@ -206,6 +203,7 @@
             this.chkCleanStartup.Text = "Clean files at Startup";
             this.ttipOptions.SetToolTip(this.chkCleanStartup, "Future option");
             this.chkCleanStartup.UseVisualStyleBackColor = true;
+            this.chkCleanStartup.Visible = false;
             // 
             // chkCleanExit
             // 
@@ -218,6 +216,7 @@
             this.chkCleanExit.Text = "Clean files on Exit";
             this.ttipOptions.SetToolTip(this.chkCleanExit, "Future option");
             this.chkCleanExit.UseVisualStyleBackColor = true;
+            this.chkCleanExit.Visible = false;
             // 
             // btnMusicFolder
             // 
@@ -241,6 +240,7 @@
             this.cbLang.Location = new System.Drawing.Point(218, 162);
             this.cbLang.Name = "cbLang";
             this.cbLang.Size = new System.Drawing.Size(182, 33);
+            this.cbLang.Sorted = true;
             this.cbLang.TabIndex = 11;
             this.cbLang.ValueMember = "Locale";
             // 

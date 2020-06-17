@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -17,6 +18,7 @@ namespace PRACT_OBS
         public OptionsForm()
         {
             InitializeComponent();
+            ApplyLocalizationToControls(this.Controls);
             cbLang.Items.AddRange(Languages.SupportedLanguages.ToArray());
 
 
@@ -159,6 +161,29 @@ namespace PRACT_OBS
                 openRekordboxXML.FileName = txtRekordboxXMLFile.Text;
             openRekordboxXML.ShowDialog();
             txtRekordboxXMLFile.Text = openRekordboxXML.FileName;
+        }
+
+        private void ApplyLocalizationToControls(Control.ControlCollection cc)
+        {
+            foreach (Control c in cc)
+            {
+#if DEBUG
+                Trace.WriteLine($"{ c.Name } - { c.Text }");
+#endif
+                c.Text = rm.GetString(c.Text);
+                ttipOptions.SetToolTip(c, rm.GetString($"tooltip.{ this.Name }.{ c.Name }"));
+                if (c.Controls.Count > 0)
+                {
+                    ApplyLocalizationToControls(c.Controls);
+                }
+            }
+        }
+        private System.Resources.ResourceManager rm
+        {
+            get
+            {
+                return PRACT.Properties.strings.ResourceManager;
+            }
         }
     }
 }

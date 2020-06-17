@@ -171,4 +171,7 @@
   <data name="Process log" xml:space="preserve">
     <value>Journal d'exécution</value>
   </data>
+  <data name="Music Folder" xml:space="preserve">
+    <value>Rép. musique DJ</value>
+  </data>
 </root>

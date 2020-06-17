@@ -334,7 +334,9 @@ namespace PRACT_GUI
         {
             foreach(Control c in cc)
             {
+#if DEBUG
                 Trace.WriteLine($"{ c.Name } - { c.Text }");
+#endif
                 c.Text = rm.GetString(c.Text);
                 ttipMainform.SetToolTip(c, rm.GetString($"tooltip.{ this.Name }.{ c.Name }"));
                 if (c.Controls.Count > 0)
