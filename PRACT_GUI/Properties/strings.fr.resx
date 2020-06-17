@@ -117,38 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Backup Music" xml:space="preserve">
-    <value>Sauvegarder la musique</value>
+  <data name="&amp;About..." xml:space="preserve">
+    <value>&amp;A propros...</value>
   </data>
-  <data name="Duplicates" xml:space="preserve">
-    <value>Doublons</value>
-  </data>
-  <data name="Generate M3U8 Playlists" xml:space="preserve">
-    <value>Générer des playlists M3U8</value>
-  </data>
-  <data name="Generate Scripts" xml:space="preserve">
-    <value>Générer des scripts</value>
-  </data>
-  <data name="Missing" xml:space="preserve">
-    <value>Manquants</value>
-  </data>
-  <data name="Orphans" xml:space="preserve">
-    <value>Orphelins</value>
-  </data>
-  <data name="Process" xml:space="preserve">
-    <value>Traiter</value>
-  </data>
-  <data name="Show Statistics" xml:space="preserve">
-    <value>Afficher les statistiques</value>
-  </data>
-  <data name="Unanalyzed" xml:space="preserve">
-    <value>Non analysés</value>
-  </data>
-  <data name="Unreferenced" xml:space="preserve">
-    <value>Non référencés</value>
-  </data>
-  <data name="Untagged" xml:space="preserve">
-    <value>Non taggés</value>
+  <data name="&amp;Copy" xml:space="preserve">
+    <value>&amp;Copier</value>
   </data>
   <data name="&amp;Edit" xml:space="preserve">
     <value>&amp;Edition</value>
@@ -159,19 +132,244 @@
   <data name="&amp;Help" xml:space="preserve">
     <value>&amp;Aide</value>
   </data>
+  <data name="&amp;New" xml:space="preserve">
+    <value>&amp;Nouveau</value>
+  </data>
+  <data name="&amp;Open" xml:space="preserve">
+    <value>&amp;Ouvrir</value>
+  </data>
+  <data name="&amp;Options" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="&amp;Paste" xml:space="preserve">
+    <value>&amp;Coller</value>
+  </data>
+  <data name="&amp;Redo" xml:space="preserve">
+    <value>&amp;Refaire</value>
+  </data>
+  <data name="&amp;Save" xml:space="preserve">
+    <value>&amp;Sauvegarder</value>
+  </data>
   <data name="&amp;Tools" xml:space="preserve">
     <value>&amp;Outils</value>
+  </data>
+  <data name="&amp;Undo" xml:space="preserve">
+    <value>&amp;Annuler</value>
+  </data>
+  <data name="..." xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="Backup Music" xml:space="preserve">
+    <value>Sauvegarder la musique</value>
+  </data>
+  <data name="Calculating music library files size" xml:space="preserve">
+    <value>Calcul de la taille des fichiers de la collection</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Cancelled!" xml:space="preserve">
+    <value>Annulé !</value>
+  </data>
+  <data name="Cancelling" xml:space="preserve">
+    <value>Annulation en cours</value>
+  </data>
+  <data name="Checking files stored in" xml:space="preserve">
+    <value>Vérification des fichiers stockés dans</value>
+  </data>
+  <data name="Closing program" xml:space="preserve">
+    <value>Fermeture du programme en cours</value>
   </data>
   <data name="Commands" xml:space="preserve">
     <value>Commandes</value>
   </data>
+  <data name="Cu&amp;t" xml:space="preserve">
+    <value>Co&amp;uper</value>
+  </data>
+  <data name="Duplicates" xml:space="preserve">
+    <value>Doublons</value>
+  </data>
+  <data name="E&amp;xit" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Erreur :</value>
+  </data>
+  <data name="File not found" xml:space="preserve">
+    <value>Fichier non trouvé</value>
+  </data>
+  <data name="file(s) could not be copied" xml:space="preserve">
+    <value>fichier(s) n'ont/n'a pas pu être copié(s)</value>
+  </data>
+  <data name="Finished!" xml:space="preserve">
+    <value>Terminé !</value>
+  </data>
+  <data name="Generate M3U8 Playlists" xml:space="preserve">
+    <value>Générer des listes M3U8</value>
+  </data>
+  <data name="Generate Scripts" xml:space="preserve">
+    <value>Générer des Scripts</value>
+  </data>
+  <data name="Idle" xml:space="preserve">
+    <value>En attente</value>
+  </data>
+  <data name="impossible to copy" xml:space="preserve">
+    <value>impossible de copier</value>
+  </data>
+  <data name="Impossible to start processing:" xml:space="preserve">
+    <value>Impossible de démarrer le traitement:</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Mine for the key" xml:space="preserve">
+    <value>Miner la clé</value>
+  </data>
+  <data name="Missing" xml:space="preserve">
+    <value>Manquants</value>
+  </data>
+  <data name="music files processed" xml:space="preserve">
+    <value>fichiers de musique traités</value>
+  </data>
+  <data name="Music Folder" xml:space="preserve">
+    <value>Répertoire de musique</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
+  </data>
+  <data name="Orphans" xml:space="preserve">
+    <value>Orphelins</value>
+  </data>
+  <data name="Output Folder" xml:space="preserve">
+    <value>Répertoire de sortie</value>
+  </data>
+  <data name="Playlists loaded!" xml:space="preserve">
+    <value>Listes de lectures chargées !</value>
+  </data>
+  <data name="Print Pre&amp;view" xml:space="preserve">
+    <value>Print Pre&amp;view</value>
+  </data>
+  <data name="Process" xml:space="preserve">
+    <value>Traiter</value>
   </data>
   <data name="Process log" xml:space="preserve">
     <value>Journal d'exécution</value>
   </data>
-  <data name="Music Folder" xml:space="preserve">
-    <value>Rép. musique DJ</value>
+  <data name="Processing" xml:space="preserve">
+    <value>Traitement en cours</value>
+  </data>
+  <data name="Processing duplicates..." xml:space="preserve">
+    <value>Traitement des doublons...</value>
+  </data>
+  <data name="Processing missing tracks..." xml:space="preserve">
+    <value>Traitement des fichiers manquants...</value>
+  </data>
+  <data name="Processing orphans..." xml:space="preserve">
+    <value>Traitement des morceaux orphelins...</value>
+  </data>
+  <data name="Processing unanalyzed tracks..." xml:space="preserve">
+    <value>Traitement des morceaux non préparés...</value>
+  </data>
+  <data name="Processing unreferenced files..." xml:space="preserve">
+    <value>Traitement des morceaux non référencés...</value>
+  </data>
+  <data name="Processing untagged tracks..." xml:space="preserve">
+    <value>Traitement des morceaux sans tags...</value>
+  </data>
+  <data name="Rekordbox XML File" xml:space="preserve">
+    <value>Fichier Rekordbox XML</value>
+  </data>
+  <data name="Save &amp;As" xml:space="preserve">
+    <value>Save &amp;As</value>
+  </data>
+  <data name="Select &amp;All" xml:space="preserve">
+    <value>Select &amp;All</value>
+  </data>
+  <data name="Show Statistics" xml:space="preserve">
+    <value>Afficher des statistiques</value>
+  </data>
+  <data name="Starting music files copy from" xml:space="preserve">
+    <value>Démarrage de la copie des fichiers de musique depuis</value>
+  </data>
+  <data name="Starting up..." xml:space="preserve">
+    <value>Démarrage...</value>
+  </data>
+  <data name="This could take a long time. Would you like to overwrite the existing files ?" xml:space="preserve">
+    <value>Cela pourrait durer un certain temps. Voulez-vous écraser les fichier existants ?</value>
+  </data>
+  <data name="this may take a while..." xml:space="preserve">
+    <value>cela pourrait prendre du temps...</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>vers</value>
+  </data>
+  <data name="tooltip.MainForm.btnProcess" xml:space="preserve">
+    <value>Démarrer le traitement</value>
+  </data>
+  <data name="tooltip.MainForm.chkDuplicates" xml:space="preserve">
+    <value>Les doublons sont des morceaux avec les mêmes titres et artistes</value>
+  </data>
+  <data name="tooltip.MainForm.chkMissing" xml:space="preserve">
+    <value>Morceaux qui n'ont pas pu être trouvés sur disque</value>
+  </data>
+  <data name="tooltip.MainForm.chkOrphans" xml:space="preserve">
+    <value>Les orphelins sont des morceaux de la collection qui n'existent dans aucune liste de lecture</value>
+  </data>
+  <data name="tooltip.MainForm.chkUnanalyzed" xml:space="preserve">
+    <value>Morceaux qui n'ont pas été préparés ou analysés</value>
+  </data>
+  <data name="tooltip.MainForm.chkUnreferenced" xml:space="preserve">
+    <value>Morceaux du répertoire de musique qui n'ont pas été importés dans la collection</value>
+  </data>
+  <data name="tooltip.MainForm.chkUntagged" xml:space="preserve">
+    <value>Morceaux sans métadonnées (ID3)</value>
+  </data>
+  <data name="tooltip.MainForm.progBar" xml:space="preserve">
+    <value>Progression du traitement</value>
+  </data>
+  <data name="tooltip.OptionsForm.cbLang" xml:space="preserve">
+    <value>Choose on-screen language. Requires restart.</value>
+  </data>
+  <data name="tooltip.OptionsForm.chkMine" xml:space="preserve">
+    <value>Rekordbox 6: tente de déterminer automatiquement la clé de cryptage de la base de données de Rekordbox (recommandé)</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtKey" xml:space="preserve">
+    <value>Rekordbox 6: saisissez la clé de cryptage de la base de données</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtMusicFolder" xml:space="preserve">
+    <value>Répertoire contenant la musique pour DJ</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtOutputFolder" xml:space="preserve">
+    <value>Répertoire où exporter les listes générées et la musique sauvegardée</value>
+  </data>
+  <data name="tooltip.OptionsForm.txtRekordboxXMLFile" xml:space="preserve">
+    <value>Collection Rekordbox exportée en tant que fichier XML</value>
+  </data>
+  <data name="Total size:" xml:space="preserve">
+    <value>Taille totale :</value>
+  </data>
+  <data name="track(s) loaded!" xml:space="preserve">
+    <value>morceau(x) chargé(s) !</value>
+  </data>
+  <data name="Unanalyzed" xml:space="preserve">
+    <value>Non analysés</value>
+  </data>
+  <data name="Unreferenced" xml:space="preserve">
+    <value>Non référencés</value>
+  </data>
+  <data name="Untagged" xml:space="preserve">
+    <value>Sans métadonnées</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="You're about to copy" xml:space="preserve">
+    <value>Vous allez copier</value>
   </data>
 </root>
