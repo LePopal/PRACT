@@ -28,24 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstPlaylists = new System.Windows.Forms.ListBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
-            // lstPlaylists
+            // treeView1
             // 
-            this.lstPlaylists.FormattingEnabled = true;
-            this.lstPlaylists.ItemHeight = 25;
-            this.lstPlaylists.Location = new System.Drawing.Point(13, 13);
-            this.lstPlaylists.Name = "lstPlaylists";
-            this.lstPlaylists.Size = new System.Drawing.Size(1381, 354);
-            this.lstPlaylists.TabIndex = 0;
+            this.treeView1.Location = new System.Drawing.Point(24, 13);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(642, 398);
+            this.treeView1.TabIndex = 0;
             // 
             // PlaylistManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1406, 450);
-            this.Controls.Add(this.lstPlaylists);
+            this.Controls.Add(this.treeView1);
             this.Name = "PlaylistManager";
             this.Text = "PlaylistManager";
             this.Load += new System.EventHandler(this.PlaylistManager_Load);
@@ -55,6 +53,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lstPlaylists;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

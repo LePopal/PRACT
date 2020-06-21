@@ -23,6 +23,7 @@
 			<ComponentGroupRef Id="ProgramFilesFolder_files" />
       <ComponentGroupRef Id="ProgramFilesFolder_WinX64Native" />
       <ComponentGroupRef Id="ProgramFilesFolder_WinX86Native" />
+      <ComponentGroupRef Id="ProgramFilesFolder_Fr" />
       <ComponentRef Id="ApplicationShortcut"/>
       <ComponentRef Id="ApplicationDesktopShortcut"/>
 		</Feature>
@@ -49,6 +50,11 @@
                 </Directory>
               </Directory>
             </Directory>
+            <Directory Id="Resources_fr" Name="fr">
+              <Component Id="CreateResourceFrFolder" Guid="9911f54f-a557-4a83-8df9-63a15ca43302">
+                <CreateFolder />
+              </Component>  
+            </Directory>
           </Directory>
         </Directory>
       </Directory>
@@ -63,6 +69,9 @@
     </Feature>
     <Feature Id="CreateRuntimesX86Folder" Title="native" Level="1">
       <ComponentRef Id="CreateRuntimesX86Folder"/>
+    </Feature>
+    <Feature Id="CreateResourceFrFolder" Title="native" Level="1">
+      <ComponentRef Id="CreateResourceFrFolder"/>
     </Feature>
 	</Fragment>
 
@@ -94,7 +103,7 @@
     <DirectoryRef Id="DesktopFolder">
       <Component Id="ApplicationDesktopShortcut" Guid="3c429430-c353-4ebd-a309-61f74bb178a8">
         <Shortcut Id="MyDesktopShortcut"
-                  Name="!(name.property.ProductName)"
+                  Name="!(bind.property.ProductName)"
                   Description="Clean up your Rekordbox collection with PRACT!"
                   Directory="DesktopFolder"
                   Target="[INSTALLFOLDER]PRACT.exe"
@@ -197,6 +206,7 @@
 	    <Component Id="Microsoft.Extensions.DependencyModel.dll" Guid="f578f796-38b1-4b6a-a139-6deeec4a4c86">
 	      <File Id="Microsoft.Extensions.DependencyModel.dll" Name="Microsoft.Extensions.DependencyModel.dll" Source="$(var.PRACT_GUI_TargetDir)Microsoft.Extensions.DependencyModel.dll" />
 	    </Component>
+
 	  </ComponentGroup>
 
     <ComponentGroup Id="ProgramFilesFolder_WinX64Native" Directory="RuntimeX64Native" >
@@ -211,5 +221,12 @@
         <File Id="e_sqlcipher86.dll" Name="e_sqlcipher.dll" Source="$(var.PRACT_GUI_TargetDir)runtimes\win-x86\native\e_sqlcipher.dll" />
       </Component>
     </ComponentGroup>
+
+    <ComponentGroup Id="ProgramFilesFolder_Fr" Directory="Resources_fr">
+      <Component Id="PRACT.resources.dll_fr" Guid="0eeb440f-2cf4-4744-99c3-2cea2be05738">
+        <File Id="PRACT.resources.dll_fr" Name="PRACT.resources.dll" Source="$(var.PRACT_GUI_TargetDir)fr\PRACT.resources.dll"></File>
+      </Component>
+    </ComponentGroup>
+    
 	</Fragment>
 </Wix>

@@ -204,7 +204,6 @@ namespace PRACT_GUI
                         worker.ReportProgress(100, $"{ rm.GetString("Error:") } { errorsCount } { rm.GetString("file(s) could not be copied") }.");
                 }
                 worker.ReportProgress(100, rm.GetString("Finished!"));
-                tsCurrentProcess.Text = rm.GetString("Finished!");
             }
             else
             {
@@ -324,9 +323,9 @@ namespace PRACT_GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //PlaylistManager playlistManager = new PlaylistManager();
-            //playlistManager.Show();
-            Trace.WriteLine(TypeDescriptor.GetComponentName(this.btnProcess));
+            PlaylistManager playlistManager = new PlaylistManager();
+            playlistManager.Show();
+            //Trace.WriteLine(TypeDescriptor.GetComponentName(this.btnProcess));
 
         }
 
