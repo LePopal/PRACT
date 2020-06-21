@@ -1,6 +1,7 @@
 ﻿using PRACT.Classes;
 using PRACT.Classes.Helpers;
 using PRACT.Common;
+using PRACT.Common.Helpers;
 using PRACT.Common.IO;
 using PRACT.Common.UI;
 using PRACT.Forms;
@@ -22,7 +23,7 @@ namespace PRACT_GUI
     public partial class MainForm : Form
     {
         private TextBoxLogger tbl;
-        protected PlaylistHelper PlaylistHelper;
+        protected PRACT.Rekordbox5.Helpers.PlaylistHelper ph;
         private BackgroundWorker backgroundWorker = new BackgroundWorker();
         private bool closePending;
 
@@ -91,16 +92,16 @@ namespace PRACT_GUI
                 worker.ReportProgress(0,$"{ rm.GetString("Processing") } { ProgramSettings.RekordboxXMLFile }");
 
                 // On first run, the Playlist Helper is empty 
-                if (PlaylistHelper == null)
-                    PlaylistHelper = new PlaylistHelper(ProgramSettings.OutputFolder
+                if (ph == null)
+                    ph = new PRACT.Rekordbox5.Helpers.PlaylistHelper(ProgramSettings.OutputFolder
                         , ProgramSettings.MusicFolder
                         , new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile));
                 // On the next runs, the XML file may have changed
-                else if (PlaylistHelper.Playlists.RekordboxXMLFullPath != ProgramSettings.RekordboxXMLFile)
-                    PlaylistHelper.Playlists = new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile);
+                else if (ph.Playlists.RekordboxXMLFullPath != ProgramSettings.RekordboxXMLFile)
+                    ph.Playlists = new DJ_PLAYLISTS(ProgramSettings.RekordboxXMLFile);
 
-                worker.ReportProgress(0,$"{ PlaylistHelper.TrackCount } { rm.GetString("track(s) loaded!") }");
-                worker.ReportProgress(0,$"{ PlaylistHelper.PlaylistCount } { rm.GetString("Playlists loaded!") }");
+                worker.ReportProgress(0,$"{ ph.TrackCount } { rm.GetString("track(s) loaded!") }");
+                worker.ReportProgress(0,$"{ ph.PlaylistCount } { rm.GetString("Playlists loaded!") }");
 
                 if (radPlaylists.Checked)
                 {
@@ -137,7 +138,7 @@ namespace PRACT_GUI
                         {
                             tsCurrentProcess.Text = pw.Title;
                             worker.ReportProgress((pw.Order * 100) / WorkOrder, pw.Title);
-                            pw.DoWork(PlaylistHelper);
+                            pw.DoWork(ph);
                         }
                         else
                         {
@@ -151,13 +152,13 @@ namespace PRACT_GUI
                 else if (radStats.Checked)
                 {
                     worker.ReportProgress(0,$"{rm.GetString("Calculating music library files size")}...");
-                    worker.ReportProgress(100,rm.GetString("Total size:") + string.Format(new FileSizeFormatProvider(), " {0:fs}", PlaylistHelper.Playlists.Size));
+                    worker.ReportProgress(100,rm.GetString("Total size:") + string.Format(new FileSizeFormatProvider(), " {0:fs}", ph.Playlists.Size));
                 }
                 else if (radBackupMusic.Checked)
                 {
                     DialogResult dialogResult =
                         Messages.YesNoCancelMessage(rm.GetString("You're about to copy")  
-                                                                + string.Format(new FileSizeFormatProvider(), " {0:fs}. ", PlaylistHelper.Playlists.Size)
+                                                                + string.Format(new FileSizeFormatProvider(), " {0:fs}. ", ph.Playlists.Size)
                                                                 + rm.GetString("This could take a long time. Would you like to overwrite the existing files ?"));
                     bool overwrite = false;
                     switch(dialogResult)
@@ -176,10 +177,10 @@ namespace PRACT_GUI
                     FileCopier fc = new FileCopier(ProgramSettings.MusicFolder, ProgramSettings.OutputFolder);
                     
                     int count = 1;
-                    int total = PlaylistHelper.TrackCount;
+                    int total = ph.TrackCount;
                     int errorsCount = 0;
 
-                    foreach (string file in PlaylistHelper.CollectionMusicFiles())
+                    foreach (string file in ph.CollectionMusicFiles())
                     {
                         if (!worker.CancellationPending)
                         {

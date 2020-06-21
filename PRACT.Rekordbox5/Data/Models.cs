@@ -1,4 +1,5 @@
-﻿using PRACT.Rekordbox5.Helpers;
+﻿using PRACT.Common.Data;
+using PRACT.Rekordbox5.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -312,7 +313,7 @@ namespace PRACT.Rekordbox5.Data
         private List<TRACK> _Untagged = null;
     }
 
-    public class PRODUCT
+    public class PRODUCT : Product
     {
         public string Name { get; set; }
         public string Version { get; set; }

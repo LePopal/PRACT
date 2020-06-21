@@ -1,7 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PRACT.Common\PRACT.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Playlist\" />
+  </ItemGroup>
 
 </Project>

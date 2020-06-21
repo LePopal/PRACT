@@ -1,4 +1,4 @@
-﻿using PRACT.Rekordbox5.Helpers;
+﻿using PRACT.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +17,7 @@ namespace PRACT.Common
             this.Order = Order;
         }
 
-        public void DoWork(PlaylistHelper Helper)
+        public void DoWork(AbstractPlaylistHelper Helper)
         {
             if(Option != PlaylistOptions.None)
                 Helper.WritePlaylist(Option);

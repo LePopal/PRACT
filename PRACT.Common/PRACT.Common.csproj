@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PRACT.Rekordbox5\PRACT.Rekordbox5.csproj" />
-    <ProjectReference Include="..\PRACT.Rekordbox6\PRACT.Rekordbox6.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Windows.Forms.Design">
       <HintPath>..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Windows.Forms.Design.dll</HintPath>
     </Reference>
