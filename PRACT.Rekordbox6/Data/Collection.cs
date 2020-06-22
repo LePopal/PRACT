@@ -1,9 +1,10 @@
-﻿using System;
+﻿using PRACT.Common.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PRACT.Common.Data
+namespace PRACT.Rekordbox6.Data
 {
     [Serializable()]
     public class Collection

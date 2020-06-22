@@ -12,7 +12,8 @@ namespace PRACT.Common.Data
         public string Company { get; set; }
         public Product()
         {
-
+            Name = "rekordbox";
+            Company = "Pioneer DJ";
         }
     }
 }
