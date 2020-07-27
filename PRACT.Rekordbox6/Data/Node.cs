@@ -8,10 +8,10 @@ namespace PRACT.Rekordbox6.Data
 {
     public class Node : PRACT.Common.Data.Node
     {
-        protected override void GetNodes()
+        protected override List<PRACT.Common.Data.Node> GetNodes()
         {
             NodesReader nr = new NodesReader(new Classes.Data.MasterDB(ProgramSettings.PASSPHRASE_TO_MINE, ""), this.Id);
-            this.Nodes = nr.GetAll();
+            return nr.GetAll();
         }
 
         protected override void GetTrackNodes()

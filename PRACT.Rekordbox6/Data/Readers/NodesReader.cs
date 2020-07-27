@@ -8,9 +8,9 @@ using System.Text;
 
 namespace PRACT.Rekordbox6.Data.Readers
 {
-    public class NodesReader : AbstractReader<Node>
+    public class NodesReader : AbstractReader<PRACT.Common.Data.Node>
     {
-        public override List<Node> GetAll()
+        public override List<PRACT.Common.Data.Node> GetAll()
         {
             DbConnection dbConnection = _MasterDB.MasterDBConnection;
 
@@ -20,7 +20,7 @@ namespace PRACT.Rekordbox6.Data.Readers
                 StringBuilder sb = new StringBuilder();
                 using (DbDataReader edr = qry.ExecuteReader(CommandBehavior.SequentialAccess))
                 {
-                    this.Result = new List<Node>();
+                    this.Result = new List<PRACT.Common.Data.Node>();
                     while (edr.Read())
                     {
                         int i = 0;

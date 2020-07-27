@@ -21,7 +21,7 @@ namespace PRACT.Common.Data
             get
             {
                 if (_Nodes == null)
-                    GetNodes();
+                    _Nodes = GetNodes();
                 return _Nodes;
             }
             set
@@ -49,7 +49,7 @@ namespace PRACT.Common.Data
         }
         public int Id { get; set; }
 
-        protected abstract void GetNodes();
+        protected abstract List<Node> GetNodes();
         protected abstract void GetTrackNodes();
 
         private List<Node> _Nodes;
