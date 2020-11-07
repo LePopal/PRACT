@@ -376,7 +376,7 @@
             // btnProcess
             // 
             this.btnProcess.Location = new System.Drawing.Point(8, 145);
-            this.btnProcess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProcess.Margin = new System.Windows.Forms.Padding(2);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(78, 20);
             this.btnProcess.TabIndex = 10;
@@ -389,7 +389,7 @@
             // 
             this.radBackupMusic.AutoSize = true;
             this.radBackupMusic.Location = new System.Drawing.Point(11, 82);
-            this.radBackupMusic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radBackupMusic.Margin = new System.Windows.Forms.Padding(2);
             this.radBackupMusic.Name = "radBackupMusic";
             this.radBackupMusic.Size = new System.Drawing.Size(99, 19);
             this.radBackupMusic.TabIndex = 1;
@@ -404,7 +404,7 @@
             // 
             this.chkDuplicates.AutoSize = true;
             this.chkDuplicates.Location = new System.Drawing.Point(22, 40);
-            this.chkDuplicates.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkDuplicates.Margin = new System.Windows.Forms.Padding(2);
             this.chkDuplicates.Name = "chkDuplicates";
             this.chkDuplicates.Size = new System.Drawing.Size(81, 19);
             this.chkDuplicates.TabIndex = 3;
@@ -415,7 +415,7 @@
             // 
             this.chkMissing.AutoSize = true;
             this.chkMissing.Location = new System.Drawing.Point(22, 62);
-            this.chkMissing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkMissing.Margin = new System.Windows.Forms.Padding(2);
             this.chkMissing.Name = "chkMissing";
             this.chkMissing.Size = new System.Drawing.Size(67, 19);
             this.chkMissing.TabIndex = 4;
@@ -426,7 +426,7 @@
             // 
             this.chkUntagged.AutoSize = true;
             this.chkUntagged.Location = new System.Drawing.Point(22, 83);
-            this.chkUntagged.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkUntagged.Margin = new System.Windows.Forms.Padding(2);
             this.chkUntagged.Name = "chkUntagged";
             this.chkUntagged.Size = new System.Drawing.Size(78, 19);
             this.chkUntagged.TabIndex = 5;
@@ -437,7 +437,7 @@
             // 
             this.chkUnanalyzed.AutoSize = true;
             this.chkUnanalyzed.Location = new System.Drawing.Point(22, 105);
-            this.chkUnanalyzed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkUnanalyzed.Margin = new System.Windows.Forms.Padding(2);
             this.chkUnanalyzed.Name = "chkUnanalyzed";
             this.chkUnanalyzed.Size = new System.Drawing.Size(87, 19);
             this.chkUnanalyzed.TabIndex = 6;
@@ -448,7 +448,7 @@
             // 
             this.chkUnreferenced.AutoSize = true;
             this.chkUnreferenced.Location = new System.Drawing.Point(22, 127);
-            this.chkUnreferenced.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkUnreferenced.Margin = new System.Windows.Forms.Padding(2);
             this.chkUnreferenced.Name = "chkUnreferenced";
             this.chkUnreferenced.Size = new System.Drawing.Size(97, 19);
             this.chkUnreferenced.TabIndex = 7;
@@ -459,7 +459,7 @@
             // 
             this.chkOrphans.AutoSize = true;
             this.chkOrphans.Location = new System.Drawing.Point(22, 19);
-            this.chkOrphans.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkOrphans.Margin = new System.Windows.Forms.Padding(2);
             this.chkOrphans.Name = "chkOrphans";
             this.chkOrphans.Size = new System.Drawing.Size(71, 19);
             this.chkOrphans.TabIndex = 2;
@@ -479,9 +479,9 @@
             this.grpOptions.Controls.Add(this.chkUnanalyzed);
             this.grpOptions.Controls.Add(this.chkUnreferenced);
             this.grpOptions.Location = new System.Drawing.Point(223, 29);
-            this.grpOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpOptions.Margin = new System.Windows.Forms.Padding(2);
             this.grpOptions.Name = "grpOptions";
-            this.grpOptions.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpOptions.Padding = new System.Windows.Forms.Padding(2);
             this.grpOptions.Size = new System.Drawing.Size(150, 151);
             this.grpOptions.TabIndex = 8;
             this.grpOptions.TabStop = false;
@@ -494,9 +494,9 @@
             this.grpCommand.Controls.Add(this.radScripts);
             this.grpCommand.Controls.Add(this.radPlaylists);
             this.grpCommand.Location = new System.Drawing.Point(8, 29);
-            this.grpCommand.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpCommand.Margin = new System.Windows.Forms.Padding(2);
             this.grpCommand.Name = "grpCommand";
-            this.grpCommand.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpCommand.Padding = new System.Windows.Forms.Padding(2);
             this.grpCommand.Size = new System.Drawing.Size(210, 113);
             this.grpCommand.TabIndex = 9;
             this.grpCommand.TabStop = false;
@@ -506,7 +506,7 @@
             // 
             this.radStats.AutoSize = true;
             this.radStats.Location = new System.Drawing.Point(11, 60);
-            this.radStats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radStats.Margin = new System.Windows.Forms.Padding(2);
             this.radStats.Name = "radStats";
             this.radStats.Size = new System.Drawing.Size(103, 19);
             this.radStats.TabIndex = 0;
@@ -520,7 +520,7 @@
             this.radScripts.AutoSize = true;
             this.radScripts.Enabled = false;
             this.radScripts.Location = new System.Drawing.Point(11, 39);
-            this.radScripts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radScripts.Margin = new System.Windows.Forms.Padding(2);
             this.radScripts.Name = "radScripts";
             this.radScripts.Size = new System.Drawing.Size(110, 19);
             this.radScripts.TabIndex = 0;
@@ -533,7 +533,7 @@
             this.radPlaylists.AutoSize = true;
             this.radPlaylists.Checked = true;
             this.radPlaylists.Location = new System.Drawing.Point(11, 18);
-            this.radPlaylists.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radPlaylists.Margin = new System.Windows.Forms.Padding(2);
             this.radPlaylists.Name = "radPlaylists";
             this.radPlaylists.Size = new System.Drawing.Size(151, 19);
             this.radPlaylists.TabIndex = 0;
@@ -545,7 +545,7 @@
             // txtLog
             // 
             this.txtLog.Location = new System.Drawing.Point(4, 17);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(2);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
@@ -557,9 +557,9 @@
             // 
             this.grpProcessLog.Controls.Add(this.txtLog);
             this.grpProcessLog.Location = new System.Drawing.Point(377, 29);
-            this.grpProcessLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpProcessLog.Margin = new System.Windows.Forms.Padding(2);
             this.grpProcessLog.Name = "grpProcessLog";
-            this.grpProcessLog.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpProcessLog.Padding = new System.Windows.Forms.Padding(2);
             this.grpProcessLog.Size = new System.Drawing.Size(530, 151);
             this.grpProcessLog.TabIndex = 12;
             this.grpProcessLog.TabStop = false;
@@ -568,7 +568,7 @@
             // progBar
             // 
             this.progBar.Location = new System.Drawing.Point(9, 200);
-            this.progBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progBar.Margin = new System.Windows.Forms.Padding(2);
             this.progBar.Name = "progBar";
             this.progBar.Size = new System.Drawing.Size(894, 20);
             this.progBar.TabIndex = 13;
@@ -576,7 +576,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(100, 145);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 20);
             this.button1.TabIndex = 14;
@@ -601,7 +601,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Form1";

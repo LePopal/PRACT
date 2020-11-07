@@ -14,12 +14,15 @@ namespace PRACT.Rekordbox6.Data.Readers
     {
         public override List<Track> GetAll()
         {
+            return Get(Queries.GetTracks());
+        }
+        public override List<Track> Get(string Query)
+        {
             DbConnection dbConnection = _MasterDB.MasterDBConnection;
 
             using (var qry = dbConnection.CreateCommand())
             {
                 qry.CommandText = this.Query;
-                StringBuilder sb = new StringBuilder();
                 using (DbDataReader edr = qry.ExecuteReader(CommandBehavior.SequentialAccess))
                 {
                     this.Result = new List<Track>();

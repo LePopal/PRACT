@@ -14,7 +14,7 @@ namespace PRACT.Rekordbox6.Data
             return nr.GetAll();
         }
 
-        protected override void GetTrackNodes()
+        protected override void GetTracks()
         {
             throw new NotImplementedException();
         }

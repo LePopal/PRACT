@@ -32,12 +32,12 @@ namespace PRACT.Common.Data
         /// <summary>
         /// Get Tracks on the fly
         /// </summary>
-        public List<TrackNode> Tracks
+        public List<Track> Tracks
         {
             get
             {
                 if (_Tracks == null)
-                    GetTrackNodes();
+                    GetTracks();
                 return _Tracks;
             }
 
@@ -50,10 +50,10 @@ namespace PRACT.Common.Data
         public int Id { get; set; }
 
         protected abstract List<Node> GetNodes();
-        protected abstract void GetTrackNodes();
+        protected abstract List<Track> GetTracks();
 
         private List<Node> _Nodes;
-        private List<TrackNode> _Tracks;
+        private List<Track> _Tracks;
     }
 }
 
