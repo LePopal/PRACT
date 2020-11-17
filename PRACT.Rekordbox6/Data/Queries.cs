@@ -89,6 +89,12 @@ namespace PRACT.Rekordbox6.Classes.Data
 										left join djmdKey as k on c.KeyID = k.ID
 										left join djmdArtist as comp on c.ComposerID = comp.ID";
         }
+
+		public static string GetCues(int contentID)
+        {
+			return $"select Comment as Name,Kind as Num,InMsec as Start,0 as Type from djmdcue where contentid = { contentID }";
+		}
+
 		// TODO
 		public const string QRY_TRACKS_COMPLETE = "";
 
